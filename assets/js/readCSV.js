@@ -40,7 +40,7 @@ readCSV(csvLink)
         minLength: 3,
 
         // Function that is run when an item from the autocomplete list is selected
-        // ui contains  
+        // ui contains name and id for selected ingredient
         select: function (e, ui) {
           console.log($(e.currentTarget).children())
           console.log(ui)
