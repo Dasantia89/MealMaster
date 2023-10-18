@@ -16,7 +16,7 @@ function readCSV(csvFileUrl) {
         objects.push(object);
       });
 
-      // take array and rename object properties to label and value
+      // take ingredient array and create and pass a new array with object properties renamed to label and value
       return $.map(objects, function (displayArray) {
         return {
           label: displayArray.ingredientName,
@@ -36,7 +36,7 @@ readCSV(csvLink)
 
       // The source of the suggestions for the autocomplete array
       source: objects,
-      // The minimum number of characters a user has to type before autocomplete displays
+      // The minimum number of characters a user has to type before autocomplete suggestions display
       minLength: 3,
 
       // Function that is run when an item from the autocomplete list is selected
@@ -45,7 +45,7 @@ readCSV(csvLink)
         console.log($(e.currentTarget).children())
         console.log(ui)
         var ingredientName = ui.item.label;
-        $('#results').append(`<p class='mx-2'>${ingredientName}</p><p class = 'removeIngredient'>X</p>`);
+        $('#results').append(`<p class='mx-2'>${ingredientName}</p><p class = 'removeIngredient'>x</p>`);
 
         // retrieve selected ingredients from localstorage, or if empty set empty array
         var ingredientList = JSON.parse(localStorage.getItem("selectedIngredients")) || [];
@@ -56,6 +56,11 @@ readCSV(csvLink)
 
         //clear the value from the textbox and stop the event
         $(this).val(''); return false;
+      },
+      // Change the value in the text area based on which item is being focused on by hovering or up/down arrow key
+      focus: function (e,ui) {
+        $(this).val(ui.item.label)
+        return false;
       }
     });
   })
