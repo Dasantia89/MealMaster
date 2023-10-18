@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <title>MealMaster</title>
   
 </head>
@@ -12,6 +13,8 @@
 
     <main>
         <section id="search">
+            <h2>Search for Recipes</h2>
+            <input type="text" id="ingredients" placeholder="Enter ingredients (e.g., chicken, broccoli)">
             <button id="searchButton">Search</button>
         </section>
 
@@ -20,16 +23,21 @@
         </section>
 
         <section id="search2">
+            <h3>Search for Meal by food
+            <input type="text" id="query" placeholder="Enter Food Name (e.g, Pizza, Pasta, Burgers)">
+            </h3>
             <button id="searchButton2">Search</button>
         </section>
 
         <section id="results2">
-            
+
         </section>
 
        
     </main>
 
-   
-</body>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="assets/js/readCSV.js"></script>
+ </body>
 </html>
