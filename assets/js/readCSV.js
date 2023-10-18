@@ -47,3 +47,30 @@ readCSV(csvLink)
     });
 
 
+    document.getElementById("searchButton2").addEventListener("click", function() {
+      // Get the food query from the input field
+      var foodQuery = document.getElementById("query").value;
+      
+      // Call the function to search for recipes by food
+      searchRecipesByFood(foodQuery);
+      console.log(foodQuery)
+  });
+
+  function searchRecipesByFood(foodQuery) {
+    // Define the API endpoint for searching recipes by food
+    var apiUrl = `https://api.spoonacular.com/recipes/complexSearch?query=${foodQuery}`;
+    
+    // Make the API request
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            // Handle the data and display it in the "results2" section
+            displayFoodSearchResults(data);
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
+}
+
+  
+
