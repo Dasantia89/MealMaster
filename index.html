@@ -3,42 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <title>MealMaster</title>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-
 </head>
 <body>
-    <header>
+    <header class="bg-primary text-white text-center p-4">
+        <h1>MealMaster</h1>
     </header>
 
-    <main>
-        <section id="search">
+    <main class="container mt-4">
+        <section id="search" class="mb-4">
             <h2>Search for Recipes</h2>
-            <input type="text" id="ingredients" placeholder="Enter ingredients (e.g., chicken, broccoli)">
-            <button id="searchButton">Search</button>
+            <div class="input-group">
+                <input type="text" id="ingredients" class="form-control" placeholder="Enter ingredients (e.g., chicken, broccoli)">
+                <div class="input-group-append">
+                    <button id="searchButton" class="btn btn-primary">Search</button>
+                </div>
+            </div>
         </section>
 
         <section id="results">
             
         </section>
 
-        <section id="search2">
-            <h3>Search for Meal by food
-            <input type="text" id="query" placeholder="Enter Food Name (e.g, Pizza, Pasta, Burgers)">
-            </h3>
-            <button id="searchButton2">Search</button>
+        <section id="search2" class="mb-4">
+            <h3>Search for Meal by Food</h3>
+            <div class="input-group">
+                <input type="text" id="query" class="form-control" placeholder="Enter Food Name (e.g., Pizza, Pasta, Burgers)">
+                <div class="input-group-append">
+                    <button id="searchButton2" class="btn btn-primary">Search</button>
+                </div>
+            </div>
         </section>
 
         <section id="results2">
-
+            
         </section>
-
-       
     </main>
 
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="assets/js/readCSV.js"></script>
- </body>
+</body>
 </html>
+
