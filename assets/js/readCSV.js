@@ -16,6 +16,7 @@ function readCSV(csvFileUrl) {
         objects.push(object);
       });
 
+      // take array and rename object properties to label and value
       return $.map(objects, function (displayArray) {
         return {
           label : displayArray.ingredientName,
@@ -32,12 +33,20 @@ readCSV(csvLink)
       // takes ingredients from readCSV function and add them to suggestions
       // Then append them to the results div
       $("#ingredients").autocomplete({
-        source: objects, autoFocus : true,
+
+        // The source of the suggestions for the autocomplete array
+        source: objects,
+        // The minimum number of characters a user has to type before autocomplete displays
         minLength: 3,
+
+        // Function that is run when an item from the autocomplete list is selected
+        // ui contains  
         select: function (e, ui) {
           console.log($(e.currentTarget).children())
           console.log(ui)
           $('#results').append(`<p class='mx-2'>${ui.item.label}</p><p>X</p>`);
+
+          //clear the value from the textbox and stop the event
           $(this).val(''); return false;
         }
       });
