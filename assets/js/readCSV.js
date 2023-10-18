@@ -56,3 +56,13 @@ readCSV(csvLink)
     });
 
 
+    document.getElementById("searchButton2").addEventListener("click", function() {
+      // Get the food query from the input field
+      var foodQuery = document.getElementById("query").value;
+      
+      // Call the function to search for recipes by food
+      searchRecipesByFood(foodQuery);
+
+  });
+  
+
