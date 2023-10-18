@@ -29,13 +29,15 @@ function readCSV(csvFileUrl) {
 
 readCSV(csvLink)
     .then(objects => {
+      // takes ingredients from readCSV function and add them to suggestions
+      // Then append them to the results div
       $("#ingredients").autocomplete({
         source: objects, autoFocus : true,
         minLength: 3,
         select: function (e, ui) {
           console.log($(e.currentTarget).children())
           console.log(ui)
-          $('#selectedIngredients').append(`<p class='mx-2'>${ui.item.label}</p><p>X</p>`);
+          $('#results').append(`<p class='mx-2'>${ui.item.label}</p><p>X</p>`);
           $(this).val(''); return false;
         }
       });
