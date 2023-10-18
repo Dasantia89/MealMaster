@@ -13,10 +13,8 @@
   margin: auto;
 }
 
-.more-info {
+#more-info {
+  display: none;
   border: solid;
 }
 
-.hidden {
-  display: none;
-}

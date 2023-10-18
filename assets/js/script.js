@@ -1,25 +1,19 @@
-function showInfo() {
-  var moreInfoEl = document.getElementById("more-info")
-    moreInfoEl.classList.remove("hidden")
-}
 
 
+function infoToggle() {
+var moreInfoEl = document.getElementById("more-info")
+var infoButton = document.getElementById("info-button")
 
-document.getElementById("infoButton").addEventListener("click", function() {
-  
-  showInfo();
-
- 
-
-  document.getElementById("infoButton").innerHTML = "Less Info"
-
-  function hideInfo() {
-    moreInfoEl.classList.add("hidden")
+  if (moreInfoEl.style.display === "none" || moreInfoEl.style.display === "" ) {
+    moreInfoEl.style.display = "block"
+    infoButton.innerHTML = "Less Info"
   }
 
-    document.getElementById("infoButton").addEventListener("click", function() {
-      hideInfo();
-    })
-
-
-});
+  else {
+    moreInfoEl.style.display = "none"
+    infoButton.innerHTML = "More Info"
+  }
+  
+}  
+    
+    
