@@ -1,0 +1,22 @@
+.card {
+  border: solid;
+}
+
+.card-title {
+  text-align: center;
+}
+
+.card-img {
+  border: solid;
+  height: 150px;
+  width: 150px;
+  margin: auto;
+}
+
+.more-info {
+  border: solid;
+}
+
+.hidden {
+  display: none;
+}
