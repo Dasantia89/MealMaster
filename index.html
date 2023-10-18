@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <title>MealMaster</title>
+  
 </head>
+
 <body>
-    <header class="bg-primary text-white text-center p-4">
-        <h1>MealMaster</h1>
+    <header>
     </header>
 
     <main class="container mt-4">
@@ -25,7 +29,7 @@
 
         <section id="results">
             
-        </section>
+        </section>  
 
         <section id="search2" class="mb-4">
             <h3>Search for Meal by Food</h3>
@@ -40,12 +44,43 @@
         <section id="results2">
             
         </section>
+
+
+<!--Recipe Results (Nainoa)-->
+
+        <section class="recipe-container">
+            <div class="row w-75">
+
+                <div class="card" style="width:200px">
+                    <h5 class= "card-title">Recipe Name</h5>
+                    <img class="card-img" src="" alt="Recipe Image">
+                    <p class="card-text">Recipe Description</p>
+                    <button onclick="infoToggle()" id="info-button">More Info</button> 
+                        <div id="more-info">
+                            <div class="ingredients-list">
+                                <br>
+                                <p>Ingredients:</p>
+                                <ul>
+                                    <li>Item 1</li>
+                                    <li>Item 2</li>
+                                    <li>Item 3</li>
+                                    <li>Item 4</li>
+                                    <li>Item 5</li>
+                                </ul>
+                            </div>
+                            <div class="instructions">
+                                <p>Instructions:</p>     
+                            </div>
+                        </div>   
+                </div>
+
+            </div>
+        </section> 
+
     </main>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="./assets/js/readCSV.js"></script>
+    <script src="./assets/js/script.js"></script>
+   
 </body>
 </html>
 
