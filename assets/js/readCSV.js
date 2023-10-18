@@ -16,35 +16,52 @@ function readCSV(csvFileUrl) {
         objects.push(object);
       });
 
+      // take array and rename object properties to label and value
       return $.map(objects, function (displayArray) {
         return {
-          label : displayArray.ingredientName,
-          value : displayArray.ingredientID
+          label: displayArray.ingredientName,
+          value: displayArray.ingredientID
         }
-    });
+      });
     });
 }
 
 // Usage
 
 readCSV(csvLink)
-    .then(objects => {
-      // takes ingredients from readCSV function and add them to suggestions
-      // Then append them to the results div
-      $("#ingredients").autocomplete({
-        source: objects, autoFocus : true,
-        minLength: 3,
-        select: function (e, ui) {
-          console.log($(e.currentTarget).children())
-          console.log(ui)
-          $('#results').append(`<p class='mx-2'>${ui.item.label}</p><p>X</p>`);
-          $(this).val(''); return false;
-        }
-      });
-    })
-    .catch(error => {
-      console.error(error);
+  .then(objects => {
+    // takes ingredients from readCSV function and add them to suggestions
+    // Then append them to the results div
+    $("#ingredients").autocomplete({
+
+      // The source of the suggestions for the autocomplete array
+      source: objects,
+      // The minimum number of characters a user has to type before autocomplete displays
+      minLength: 3,
+
+      // Function that is run when an item from the autocomplete list is selected
+      // ui contains name and id for selected ingredient
+      select: function (e, ui) {
+        console.log($(e.currentTarget).children())
+        console.log(ui)
+        var ingredientName = ui.item.label;
+        $('#results').append(`<p class='mx-2'>${ingredientName}</p><p class = 'removeIngredient'>X</p>`);
+        
+        // retrieve selected ingredients from localstorage, or if empty set empty array
+        var ingredientList = JSON.parse(localStorage.getItem("selectedIngredients")) || [];
+        
+        // add current selected ingredient to array and save to localstorage
+        ingredientList.push(ingredientName);
+        localStorage.setItem("selectedIngredients", JSON.stringify(ingredientList));
+
+        //clear the value from the textbox and stop the event
+        $(this).val(''); return false;
+      }
     });
+  })
+  .catch(error => {
+    console.error(error);
+  });
 
 
     document.getElementById("searchButton2").addEventListener("click", function() {
@@ -53,7 +70,7 @@ readCSV(csvLink)
       
       // Call the function to search for recipes by food
       searchRecipesByFood(foodQuery);
-      console.log(foodQuery)
+
   });
 
   function searchRecipesByFood(foodQuery) {
