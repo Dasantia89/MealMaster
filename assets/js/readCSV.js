@@ -46,10 +46,10 @@ readCSV(csvLink)
         console.log(ui)
         var ingredientName = ui.item.label;
         $('#results').append(`<p class='mx-2'>${ingredientName}</p><p class = 'removeIngredient'>X</p>`);
-        
+
         // retrieve selected ingredients from localstorage, or if empty set empty array
         var ingredientList = JSON.parse(localStorage.getItem("selectedIngredients")) || [];
-        
+
         // add current selected ingredient to array and save to localstorage
         ingredientList.push(ingredientName);
         localStorage.setItem("selectedIngredients", JSON.stringify(ingredientList));
@@ -64,13 +64,14 @@ readCSV(csvLink)
   });
 
 
-    document.getElementById("searchButton2").addEventListener("click", function() {
-      // Get the food query from the input field
-      var foodQuery = document.getElementById("query").value;
-      
-      // Call the function to search for recipes by food
-      searchRecipesByFood(foodQuery);
+document.getElementById("searchButton2").addEventListener("click", function () {
+  // Get the food query from the input field
+  var foodQuery = document.getElementById("query").value;
 
-  });
-  
+  // Call the function to search for recipes by food
+  searchRecipesByFood(foodQuery);
+
+});
+
+$('.removeIngredient')
 
