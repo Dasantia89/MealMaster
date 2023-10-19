@@ -97,5 +97,43 @@ document.getElementById("searchButton2").addEventListener("click", function () {
 
   // Call the function to search for recipes by food
   searchRecipesByFood(foodQuery);
-
 });
+
+function searchRecipesByFood(foodQuery) {
+  var apiKey = '60cdb81ebc7448b1934e0610644d1b3a';
+
+  // Define the API endpoint for searching recipes by food
+  var apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${foodQuery}`;
+
+  // Make the API request
+  fetch(apiUrl)
+      .then(response => response.json())
+      .then(data => {
+          // Handle the data and display it in the "results2" section
+          displayFoodSearchResults(data.results); // Spoonacular API typically has results under 'results' property
+      })
+      .catch(error => {
+          console.error("Error:", error);
+      });
+}
+
+function displayFoodSearchResults(data) {
+  const resultsContainer = document.getElementById("results2");
+  resultsContainer.innerHTML = ""; // Clear any previous results
+
+  // Loop through the data and create HTML elements to display the results
+  data.forEach(recipe => {
+      const recipeCard = document.createElement("div");
+      recipeCard.className = "card";
+      recipeCard.innerHTML = `
+          <img src="${recipe.image}" class="card-img-top" alt="${recipe.title}">
+          <div class="card-body">
+              <h5 class="card-title">${recipe.title}</h5>
+              <p class="card-text">${recipe.summary}</p>
+              <a href="${recipe.sourceUrl}" class="btn btn-primary" target="_blank">View Recipe</a>
+          </div>
+      `;
+
+      resultsContainer.appendChild(recipeCard);
+  });
+}
