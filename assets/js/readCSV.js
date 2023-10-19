@@ -86,7 +86,9 @@ $('#results').on('click', '.ingredientHolder', function (event) {
     }
   }
   localStorage.setItem("selectedIngredients", JSON.stringify(ingredientList));
-})
+  $('#errorBody').text(ingredient + ' was removed from the ingredient list.')
+  $('#errorModal').modal('show');
+});
 
 
 document.getElementById("searchButton2").addEventListener("click", function () {
