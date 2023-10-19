@@ -1,3 +1,4 @@
+
 // API to display recipe search results
 var searchBtn2El = document.querySelector("#searchButton2")
 var recipeContainerEl = document.querySelector(".recipe-container")
@@ -14,7 +15,7 @@ searchBtn2El.addEventListener("click", (e) => {
 
 async function fetchRecipeApi() {
 
-  var baseURL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=251762f82c2f4947978e9c9e7007612f&query=pasta&ingredients=&number=20`
+  var baseURL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=251762f82c2f4947978e9c9e7007612f&query=pasta&number=20`
   var response = await fetch(baseURL)
 
   console.log(response);
@@ -31,30 +32,23 @@ fetchRecipeApi();
 // Function to display recipe search results on cards
 
 function displayRecipe(results) {
-  console.log(results)
+  console.log(results);
 
-  let generatedRecipe = ""
-  results.map(results => {
-    generatedRecipe =+
-    ` var recipeCard = document.createElement("div")
-      recipeCard.classList.add("card")
+  var recipeCard = document.createElement("div")
+  recipeCard.classList.add("card")
 
-      var recipeBody = document.createElement("div")
-      recipeBody.classList.add("card-body")
-      recipeCard.append(recipeBody);
-  
-      var recipeTitleEl = document.createElement("h5")
-      recipeTitleEl.textContent = results.title;
-      recipeBody.append(recipeTitleEl);
+  var resultBody = document.createElement("div")
+  recipeCard.classList.add("recipeCard-body")
 
-      var recipeImgEl = document.createElement("img")
-      recipyBody.append(recipeImgEl);
+  recipeCard.append(resultBody)
 
-      var recipeDescriptionEl = document.createElement("div")
-      recipeBody.append(recipeDescriptionEl);
-    `
-})
+  var recipeTitleEl = document.createElement("h3")
+  recipeTitleEl.textContent = title
 
+  var imageContent = document.createElement("img")
+    image.src = image
+  imageContent.appendChild(image)
+    
 }
 
 displayRecipe();
