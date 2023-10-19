@@ -1,4 +1,15 @@
 // APi to display recipe search results
+var searchBtn2El = document.querySelector("#searchButton2")
+var recipeContainerEl = document.querySelector(".recipe-container")
+
+let searchQuery = ""
+
+searchBtn2El.addEventListener("click", (e) => {
+  e.preventDefault();
+  searchQuery = e.target.querySelector("#query").value;
+  console.log(searchQuery)
+})
+console.log(searchQuery)
 
 function getRecipeApi() {
 
@@ -11,7 +22,7 @@ function getRecipeApi() {
     })
     .then(function (data) {
       for (var i = 0; i< data.length; i++) {
-        console.log(data[i].id)
+        
       }
     });
 
