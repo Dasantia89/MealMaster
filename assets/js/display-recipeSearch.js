@@ -17,4 +17,30 @@ function getRecipeApi() {
 
 }
 
-getRecipeApi();
+// getRecipeApi();
+
+// Function to display recipe search results on cards
+
+function displayRecipe(resultObj) {
+  console.log(resultObj)
+
+  var recipeCard = document.createElement("div")
+  recipeCard.classList.add("card")
+
+  var recipeBody = document.createElement("div")
+  recipeBody.classList.add("card-body")
+  recipeCard.append(recipeBody);
+  
+  var recipeTitleEl = document.createElement("h5")
+  recipeTitleEl.textContent = resultObj.title;
+  recipeBody.append(recipeTitleEl);
+
+  var recipeImgEl = document.createElement("img")
+  recipyBody.append(recipeImgEl);
+
+  var recipeDescriptionEl = document.createElement("div")
+  recipeBody.append(recipeDescriptionEl);
+
+}
+
+displayRecipe();
