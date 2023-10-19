@@ -42,10 +42,13 @@ readCSV(csvLink)
       // Function that is run when an item from the autocomplete list is selected
       // ui contains name and id for selected ingredient
       select: function (e, ui) {
+        // every suggested item based on what the user typed
         console.log($(e.currentTarget).children())
+        // the item that the user selected 
         console.log(ui)
+
         var ingredientName = ui.item.label;
-        $('#results').append(`<div class= 'd-flex bg-primary text-light p-1 m-1 '><p class='mb-0 text-capitalize'>
+        $('#results').append(`<div class= 'd-flex bg-primary text-light p-1 m-1 ingredientHolder'><p class='mb-0 text-capitalize'>
         ${ingredientName}</p><p class = 'removeIngredient  px-1 mb-0 mx-1'>x</p></div>`);
 
         // retrieve selected ingredients from localstorage, or if empty set empty array
@@ -59,7 +62,7 @@ readCSV(csvLink)
         $(this).val(''); return false;
       },
       // Change the value in the text area based on which item is being focused on by hovering or up/down arrow key
-      focus: function (e,ui) {
+      focus: function (e, ui) {
         $(this).val(ui.item.label)
         return false;
       }
@@ -69,7 +72,20 @@ readCSV(csvLink)
     console.error(error);
   });
 
- 
+// Remove ingredient from the list of selected ingredients on user click
+$('#results').on('click', '.ingredientHolder', function (event) {
+  var ingredient = $(this).children().eq(0)[0].innerHTML.trim();
+  $(this).remove();
+  var ingredientList = JSON.parse(localStorage.getItem("selectedIngredients"));
+  for (var x in ingredientList) {
+    if (ingredientList[x] === ingredient) {
+      ingredientList.splice(x, 1);
+    }
+  }
+  localStorage.setItem("selectedIngredients", JSON.stringify(ingredientList));
+})
+
+
 document.getElementById("searchButton2").addEventListener("click", function () {
   // Get the food query from the input field
   var foodQuery = document.getElementById("query").value;
