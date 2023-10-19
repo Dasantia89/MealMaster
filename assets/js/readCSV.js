@@ -45,7 +45,8 @@ readCSV(csvLink)
         console.log($(e.currentTarget).children())
         console.log(ui)
         var ingredientName = ui.item.label;
-        $('#results').append(`<p class='mx-2'>${ingredientName}</p><p class = 'removeIngredient'>x</p>`);
+        $('#results').append(`<div class= 'd-flex bg-primary text-light p-1 m-1 '><p class='mb-0 text-capitalize'>
+        ${ingredientName}</p><p class = 'removeIngredient  px-1 mb-0 mx-1'>x</p></div>`);
 
         // retrieve selected ingredients from localstorage, or if empty set empty array
         var ingredientList = JSON.parse(localStorage.getItem("selectedIngredients")) || [];
@@ -68,7 +69,7 @@ readCSV(csvLink)
     console.error(error);
   });
 
-
+ 
 document.getElementById("searchButton2").addEventListener("click", function () {
   // Get the food query from the input field
   var foodQuery = document.getElementById("query").value;
@@ -77,6 +78,3 @@ document.getElementById("searchButton2").addEventListener("click", function () {
   searchRecipesByFood(foodQuery);
 
 });
-
-$('.removeIngredient')
-
