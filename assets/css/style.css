@@ -13,9 +13,12 @@
   margin: auto;
 }
 
-#more-info {
-  display: none;
-  border: solid;
+.getRecipe-button {
+  text-align: center;
+}
+
+.recipe-container {
+
 }
 
 #ui-id-1 .ui-menu-item {
