@@ -1,5 +1,5 @@
 
-// function to toggle button that displays/ hides more info on recipe card
+// Function to toggle button that displays/ hides more info on recipe card
 function infoToggle() {
 var moreInfoEl = document.getElementById("more-info")
 var infoButton = document.getElementById("info-button")
@@ -14,6 +14,4 @@ var infoButton = document.getElementById("info-button")
     infoButton.innerHTML = "More Info"
   }
   
-}  
-    
-    
+}
