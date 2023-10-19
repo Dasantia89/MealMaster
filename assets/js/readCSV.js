@@ -26,6 +26,9 @@ function readCSV(csvFileUrl) {
     });
 }
 
+// Clear ingredientSelection on page load
+localStorage.setItem("selectedIngredients", JSON.stringify([]));
+
 // Usage
 
 readCSV(csvLink)
