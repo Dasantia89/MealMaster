@@ -179,7 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <div class="card-body">
               <h5 class="card-title">${recipe.title}</h5>
               <p class="card-text">${recipe.summary}</p>
-              <a onclick="fetchRecipeInfoApi()" "displayRecipeInfo()" href="recipe-results.html" class="btn btn-primary" target="_blank">View Recipe</a>
+              <a onclick="viewRecipeInfo()" "displayRecipeInfo()" href="recipe-results.html" class="btn btn-primary" target="_blank">View Recipe</a>
               <button class="btn btn-success save-button" data-recipe-id="${recipe.id}">Save</button><button class="btn btn-info shop-button mx-1 text-light" data-recipe-id="${recipe.id}">Add to shopping list</button>
           </div>
       `;
@@ -282,4 +282,3 @@ document.addEventListener("DOMContentLoaded", function () {
   // Call loadFavoritesFromLocalStorage when the page loads
   loadFavoritesFromLocalStorage();
 });
-
