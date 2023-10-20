@@ -135,3 +135,4 @@ function displayFoodSearchResults(data) {
       resultsContainer.appendChild(recipeCard);
   });
 }
+
