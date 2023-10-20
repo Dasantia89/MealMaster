@@ -14,6 +14,16 @@
 <body>
     <header class="bg-primary text-white text-center p-4">
         <h1>MealMaster</h1>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="#">Home</a>
+                <a class="nav-item nav-link" href="#">Favorites List</a>
+                <a class="nav-item nav-link" href="./display-ShoppingList.html">Shopping list</a>
+              </div>
+            </div>
+          </nav>
     </header>
 
     <main class="container mt-4">
@@ -83,14 +93,9 @@
         <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
-                    <!-- Header of the modal  -->
-                    <h1 class="modal-title fs-5" id="errorHeader"></h1>
-
-                </div>
                 <div class="modal-body">
                     <!-- Body of the modal  -->
-                    <h2 id="errorBody"></h2>
+                    <h2 id="errorBody" class="text-capitalize"></h2>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
