@@ -51,6 +51,20 @@ readCSV(csvLink)
         console.log(ui)
 
         var ingredientName = ui.item.label;
+        var ingredientList = JSON.parse(localStorage.getItem("selectedIngredients"));
+        var repeat = false;
+        if (ingredientList.length > 0) {
+          for (var x in ingredientList) {
+            if (ingredientList[x] === ingredientName) {
+              repeat = true;
+              $('#errorBody').text(ingredientName + ' has already been selected as an ingredient.')
+              $('#errorModal').modal('show');
+            }
+          }
+        }
+
+        if(!repeat){
+        // Display selected ingredient in results section
         $('#results').append(`<div class= 'd-flex bg-primary text-light p-1 m-1 ingredientHolder'><p class='mb-0 text-capitalize'>
         ${ingredientName}</p><p class = 'removeIngredient  px-1 mb-0 mx-1'>x</p></div>`);
 
@@ -60,7 +74,7 @@ readCSV(csvLink)
         // add current selected ingredient to array and save to localstorage
         ingredientList.push(ingredientName);
         localStorage.setItem("selectedIngredients", JSON.stringify(ingredientList));
-
+        }
         //clear the value from the textbox and stop the event
         $(this).val(''); return false;
       },
@@ -86,7 +100,9 @@ $('#results').on('click', '.ingredientHolder', function (event) {
     }
   }
   localStorage.setItem("selectedIngredients", JSON.stringify(ingredientList));
-})
+  $('#errorBody').text(ingredient + ' was removed from the ingredient list.')
+  $('#errorModal').modal('show');
+});
 
 
 document.getElementById("searchButton2").addEventListener("click", function () {
@@ -105,14 +121,14 @@ function searchRecipesByFood(foodQuery) {
 
   // Make the API request
   fetch(apiUrl)
-      .then(response => response.json())
-      .then(data => {
-          // Handle the data and display it in the "results2" section
-          displayFoodSearchResults(data.results); // Spoonacular API typically has results under 'results' property
-      })
-      .catch(error => {
-          console.error("Error:", error);
-      });
+    .then(response => response.json())
+    .then(data => {
+      // Handle the data and display it in the "results2" section
+      displayFoodSearchResults(data.results); // Spoonacular API typically has results under 'results' property
+    })
+    .catch(error => {
+      console.error("Error:", error);
+    });
 }
 
 function displayFoodSearchResults(data) {
@@ -121,9 +137,9 @@ function displayFoodSearchResults(data) {
 
   // Loop through the data and create HTML elements to display the results
   data.forEach(recipe => {
-      const recipeCard = document.createElement("div");
-      recipeCard.className = "card";
-      recipeCard.innerHTML = `
+    const recipeCard = document.createElement("div");
+    recipeCard.className = "card";
+    recipeCard.innerHTML = `
           <img src="${recipe.image}" class="card-img-top" alt="${recipe.title}">
           <div class="card-body">
               <h5 class="card-title">${recipe.title}</h5>
@@ -132,6 +148,6 @@ function displayFoodSearchResults(data) {
           </div>
       `;
 
-      resultsContainer.appendChild(recipeCard);
+    resultsContainer.appendChild(recipeCard);
   });
 }
