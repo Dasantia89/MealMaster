@@ -152,6 +152,20 @@ function displayFoodSearchResults(data) {
   });
 }
 
+// API Request to fetch recipe information
+
+function getRecipeInfo() {
+  var id = `data-recipe-id`
+  var baseURL = 'https://api.spoonacular.com/recipes/${id}/information?apiKey=251762f82c2f4947978e9c9e7007612f'
+
+  fetch(baseURL)
+    .then (response => response.json())
+    .then (data => {
+      displayRecipeInfo (data.results)
+    })
+    console.log(data)
+  }
+
 // Initialize the favorites list as an empty array
 var favoritesList = [];
 

@@ -27,7 +27,7 @@ async function fetchRecipeApi() {
 
 }
 
-fetchRecipeApi();
+//fetchRecipeApi();
 
 // Function to display recipe search results on cards
 
@@ -51,4 +51,4 @@ function displayRecipe(results) {
     
 }
 
-displayRecipe();
+//displayRecipe();
