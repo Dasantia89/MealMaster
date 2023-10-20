@@ -51,6 +51,20 @@ readCSV(csvLink)
         console.log(ui)
 
         var ingredientName = ui.item.label;
+        var ingredientList = JSON.parse(localStorage.getItem("selectedIngredients"));
+        var repeat = false;
+        if (ingredientList.length > 0) {
+          for (var x in ingredientList) {
+            if (ingredientList[x] === ingredientName) {
+              repeat = true;
+              $('#errorBody').text(ingredientName + ' has already been selected as an ingredient.')
+              $('#errorModal').modal('show');
+            }
+          }
+        }
+
+        if(!repeat){
+        // Display selected ingredient in results section
         $('#results').append(`<div class= 'd-flex bg-primary text-light p-1 m-1 ingredientHolder'><p class='mb-0 text-capitalize'>
         ${ingredientName}</p><p class = 'removeIngredient  px-1 mb-0 mx-1'>x</p></div>`);
 
@@ -60,7 +74,7 @@ readCSV(csvLink)
         // add current selected ingredient to array and save to localstorage
         ingredientList.push(ingredientName);
         localStorage.setItem("selectedIngredients", JSON.stringify(ingredientList));
-
+        }
         //clear the value from the textbox and stop the event
         $(this).val(''); return false;
       },
@@ -86,7 +100,9 @@ $('#results').on('click', '.ingredientHolder', function (event) {
     }
   }
   localStorage.setItem("selectedIngredients", JSON.stringify(ingredientList));
-})
+  $('#errorBody').text(ingredient + ' was removed from the ingredient list.')
+  $('#errorModal').modal('show');
+});
 
 
 document.getElementById("searchButton2").addEventListener("click", function () {
@@ -116,12 +132,11 @@ function searchRecipesByFood(foodQuery) {
 }
 
 function displayFoodSearchResults(data) {
-  const resultsContainer = document.getElementById("results2");
+  var resultsContainer = document.getElementById("results2");
   resultsContainer.innerHTML = ""; // Clear any previous results
 
-  // Loop through the data and create HTML elements to display the results
   data.forEach(recipe => {
-      const recipeCard = document.createElement("div");
+      var recipeCard = document.createElement("div");
       recipeCard.className = "card";
       recipeCard.innerHTML = `
           <img src="${recipe.image}" class="card-img-top" alt="${recipe.title}">
@@ -129,6 +144,7 @@ function displayFoodSearchResults(data) {
               <h5 class="card-title">${recipe.title}</h5>
               <p class="card-text">${recipe.summary}</p>
               <a href="${recipe.sourceUrl}" class="btn btn-primary" target="_blank">View Recipe</a>
+              <button class="btn btn-success save-button" data-recipe-id="${recipe.id}">Save</button>
           </div>
       `;
 
@@ -139,8 +155,8 @@ function displayFoodSearchResults(data) {
 // API Request to fetch recipe information
 
 function getRecipeInfo() {
-  var id = ``
-  var baseURL = 'https://api.spoonacular.com/recipes/{id}/information?apiKey=251762f82c2f4947978e9c9e7007612f'
+  var id = `data-recipe-id`
+  var baseURL = 'https://api.spoonacular.com/recipes/${id}/information?apiKey=251762f82c2f4947978e9c9e7007612f'
 
   fetch(baseURL)
     .then (response => response.json())
@@ -150,3 +166,41 @@ function getRecipeInfo() {
     console.log(data)
   }
 
+// Initialize the favorites list as an empty array
+var favoritesList = [];
+
+// Add event listener to save buttons
+document.querySelectorAll(".save-button").forEach(button => {
+  button.addEventListener("click", function() {
+      var recipeId = button.getAttribute("data-recipe-id");
+
+      // Check if the recipe is not already in the favorites list
+      if (!favoritesList.some(recipe => recipe.id === recipeId)) {
+          var selectedRecipe = data.find(recipe => recipe.id === recipeId);
+          favoritesList.push(selectedRecipe);
+
+          // Optionally, you can update the button text to indicate that it's saved.
+          button.textContent = "Saved";
+      }
+  });
+});
+
+function displayFavorites() {
+    var favoritesContainer = document.getElementById("favorites");
+    favoritesContainer.innerHTML = ""; // Clear any previous favorites
+
+    favoritesList.forEach(recipe => {
+        var favoriteCard = document.createElement("div");
+        favoriteCard.className = "card";
+        favoriteCard.innerHTML = `
+            <img src="${recipe.image}" class="card-img-top" alt="${recipe.title}">
+            <div class="card-body">
+                <h5 class="card-title">${recipe.title}</h5>
+                <p class="card-text">${recipe.summary}</p>
+                <a href="${recipe.sourceUrl}" class="btn btn-primary" target="_blank">View Recipe</a>
+            </div>
+        `;
+
+        favoritesContainer.appendChild(favoriteCard);
+    });
+}
