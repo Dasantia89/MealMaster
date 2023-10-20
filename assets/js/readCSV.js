@@ -148,6 +148,8 @@ function displayFoodSearchResults(data) {
           </div>
       `;
 
+      window.search2Id = recipe.id
+
       resultsContainer.appendChild(recipeCard);
   });
 }
@@ -155,16 +157,45 @@ function displayFoodSearchResults(data) {
 // API Request to fetch recipe information
 
 function getRecipeInfo() {
-  var recipeId = button.getAttribute("data-recipe-id")
-    var baseURL = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=251762f82c2f4947978e9c9e7007612f`
+    //change recipeID
+  
+    var requestURL = `https://api.spoonacular.com/recipes/${search2Id}/information?apiKey=251762f82c2f4947978e9c9e7007612f`
 
-  fetch(baseURL)
-    .then (response => response.json())
-    .then (data => {
-      displayRecipeInfo (data.results)
+  fetch(requestURL)
+    .then(function (response) {
+        response.json();
+    })   
+    .then(function (data) {
+        displayRecipeInfo(data.results)
+
+        console.log(data)
     })
-    console.log(results)
   }
+   
+  displayRecipeInfo(data) {
+    var infoContainerEl = document.querySelector("#info-container")
+    infoContainerEl.innerHTML = "";
+
+    data.forEach(recipe => {
+      var recipeResults = document.createElement("div");
+      recipeResults.className = "card";
+      recipeResults.innerHTML = 
+      `
+          <img src="${recipe.image}" class="recipe-img-top" alt="${recipe.title}">
+          <div class="recipe-body">
+              <h5 class="recipe-title">${recipe.title}</h5>
+              <p class="recipe-text">${recipe.summary}</p>
+          </div>
+      `;
+      infoContainerEl.appendChild.apply(recipeResults)
+
+  })
+
+  }
+  
+displayRecipeInfo(data)
+
+getRecipeInfo();
 
 
 
