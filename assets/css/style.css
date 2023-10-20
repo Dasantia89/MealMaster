@@ -24,3 +24,8 @@
 #ui-id-1 .ui-menu-item {
   text-transform: capitalize;
 }
+
+.card-img-top{
+  height: 350px;
+  width: 500px;
+}
