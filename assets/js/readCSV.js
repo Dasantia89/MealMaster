@@ -105,40 +105,39 @@ $('#results').on('click', '.ingredientHolder', function (event) {
 });
 
 
-document.getElementById("searchButton2").addEventListener("click", function () {
-  // Get the food query from the input field
-  var foodQuery = document.getElementById("query").value;
+document.addEventListener("DOMContentLoaded", function() {
+  var favoritesList = [];
+  var data = [];
 
-  // Call the function to search for recipes by food
-  searchRecipesByFood(foodQuery);
-});
+  document.getElementById("searchButton2").addEventListener("click", function () {
+    // Get the food query from the input field
+    var foodQuery = document.getElementById("query").value;
 
-function searchRecipesByFood(foodQuery) {
-  var apiKey = '60cdb81ebc7448b1934e0610644d1b3a';
+    // Call the function to search for recipes by food
+    searchRecipesByFood(foodQuery);
+  });
 
-  // Define the API endpoint for searching recipes by food
-  var apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${foodQuery}`;
+  function searchRecipesByFood(foodQuery) {
+    var apiKey = '576304abc2ed49cda203960e12375f12';
 
-  // Make the API request
-  fetch(apiUrl)
-      .then(response => response.json())
-      .then(data => {
-          // Handle the data and display it in the "results2" section
-          displayFoodSearchResults(data.results); // Spoonacular API typically has results under 'results' property
-          console.log(results)
-      })
-      .catch(error => {
-          console.error("Error:", error);
-      });
+    var apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${foodQuery}`;
 
-      
-}
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(responseData => {
+            displayFoodSearchResults(responseData.results);
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
+  }
 
-function displayFoodSearchResults(data) {
-  var resultsContainer = document.getElementById("results2");
-  resultsContainer.innerHTML = ""; // Clear any previous results
+  function displayFoodSearchResults(recipes) {
+    console.log(recipes);
+    var resultsContainer = document.getElementById("results2");
+    resultsContainer.innerHTML = "";
 
-  data.forEach(recipe => {
+    recipes.forEach(recipe => {
       var recipeCard = document.createElement("div");
       recipeCard.className = "card";
       recipeCard.innerHTML = `
@@ -152,63 +151,40 @@ function displayFoodSearchResults(data) {
       `;    
 
       resultsContainer.appendChild(recipeCard);
-  });
-}
+    });
 
-// API Request to fetch recipe information
+    // Update the event listeners for save buttons
+    document.querySelectorAll(".save-button").forEach(button => {
+      button.addEventListener("click", function() {
+        var recipeId = button.getAttribute("data-recipe-id");
 
-async function fetchRecipeInfoApi() {
+        // Find the selected recipe in the search results
+        var selectedRecipe = recipes.find(recipe => recipe.id == recipeId);
 
-  var recipeInfoURL = 'https://api.spoonacular.com/recipes/{716429}/information?apiKey=3fe2e7a85cbe455abfcc13d03019145e'
-  var response = await fetch(recipeInfoURL)
-
-  console.log(response);
-
-  var data = await response.json();
-  fetchRecipeApi(data.results)
-
-  console.log(data);
-  console.log(results);
-
-}
-
-// Function to display recipe information on recipe-results.html page
-
-function displayRecipeInfo() {
-
-}
-
-
-var viewRecipeBtn = document.querySelector(".btn-primary")
-
-viewRecipeBtn.addEventListener("click", () => {
-  fetchRecipeInfoApi();
-  displayRecipeInfo();
-  console.log("button clicked!")
-})
-
-
-// Initialize the favorites list as an empty array
-var favoritesList = [];
-
-// Add event listener to save buttons
-document.querySelectorAll(".save-button").forEach(button => {
-  button.addEventListener("click", function() {
-      var recipeId = button.getAttribute("data-recipe-id");
-
-      // Check if the recipe is not already in the favorites list
-      if (!favoritesList.some(recipe => recipe.id === recipeId)) {
-          var selectedRecipe = data.find(recipe => recipe.id === recipeId);
+        // Check if the recipe is not already in the favorites list
+        if (!favoritesList.some(recipe => recipe.id === recipeId)) {
           favoritesList.push(selectedRecipe);
 
           // Optionally, you can update the button text to indicate that it's saved.
           button.textContent = "Saved";
-      }
-  });
-});
 
-function displayFavorites() {
+          // Save the updated favorites list to local storage
+          saveFavoritesToLocalStorage();
+
+          // Update the displayed favorites
+          displayFavorites();
+        }
+      });
+    });
+  }
+  console.log("before calling displayFavorites");
+  function displayFavorites() {
+    console.log("inside calling displayFavorites")
+    console.log("The favorites list is:", favoritesList);
     var favoritesContainer = document.getElementById("favorites");
+    if (!favoritesContainer) {
+        return; // Favorites container not found
+    }
     favoritesContainer.innerHTML = ""; // Clear any previous favorites
 
     favoritesList.forEach(recipe => {
@@ -226,3 +202,23 @@ function displayFavorites() {
         favoritesContainer.appendChild(favoriteCard);
     });
 }
+
+  // Save favorites to local storage
+  function saveFavoritesToLocalStorage() {
+    localStorage.setItem("favorites", JSON.stringify(favoritesList));
+    console.log("Favorites saved to local storage");
+  }
+
+  // Load favorites from local storage when the page loads
+  function loadFavoritesFromLocalStorage() {
+    var savedFavorites = localStorage.getItem("favorites");
+    if (savedFavorites) {
+        favoritesList = JSON.parse(savedFavorites);
+        displayFavorites(); // Update the displayed favorites
+    }
+  }
+
+  // Call loadFavoritesFromLocalStorage when the page loads
+  loadFavoritesFromLocalStorage();
+});
+
