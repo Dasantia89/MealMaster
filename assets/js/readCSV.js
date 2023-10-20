@@ -195,7 +195,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
           }
         }
-
+        
         if (!repeat) {
           shoppingList.push(recipeId);
           localStorage.setItem("shoppingList", JSON.stringify(shoppingList));
