@@ -6,12 +6,12 @@ let searchQuery = ""
 
 var baseURL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=251762f82c2f4947978e9c9e7007612f&query=pasta&ingredients=&number=20`
 
-  // Function not working. still needs to be fixed
-// searchBtn2El.addEventListener("click", (e) => {
-//   e.preventDefault();
-//   searchQuery = e.target.querySelector("#query").value;
-//   console.log(searchQuery)
-// })
+  Function not working. still needs to be fixed
+searchBtn2El.addEventListener("click", (e) => {
+  e.preventDefault();
+  searchQuery = e.target.querySelector("#query").value;
+  console.log(searchQuery)
+})
 
 async function fetchRecipeApi() {
 
