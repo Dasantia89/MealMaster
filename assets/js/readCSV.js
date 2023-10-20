@@ -143,7 +143,7 @@ function displayFoodSearchResults(data) {
           <div class="card-body">
               <h5 class="card-title">${recipe.title}</h5>
               <p class="card-text">${recipe.summary}</p>
-              <a href="${recipe.sourceUrl}" class="btn btn-primary" target="_blank">View Recipe</a>
+              <a href="./recipe-results.html" class="btn btn-primary" target="_blank">View Recipe</a>
               <button class="btn btn-success save-button" data-recipe-id="${recipe.id}">Save</button>
           </div>
       `;
@@ -155,16 +155,18 @@ function displayFoodSearchResults(data) {
 // API Request to fetch recipe information
 
 function getRecipeInfo() {
-  var id = `data-recipe-id`
-  var baseURL = 'https://api.spoonacular.com/recipes/${id}/information?apiKey=251762f82c2f4947978e9c9e7007612f'
+  var recipeId = button.getAttribute("data-recipe-id")
+    var baseURL = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=251762f82c2f4947978e9c9e7007612f`
 
   fetch(baseURL)
     .then (response => response.json())
     .then (data => {
       displayRecipeInfo (data.results)
     })
-    console.log(data)
+    console.log(results)
   }
+
+
 
 // Initialize the favorites list as an empty array
 var favoritesList = [];
