@@ -52,6 +52,7 @@ readCSV(csvLink)
 
         var ingredientName = ui.item.label;
         var ingredientList = JSON.parse(localStorage.getItem("selectedIngredients"));
+        // check for repeated ingredient 
         var repeat = false;
         if (ingredientList.length > 0) {
           for (var x in ingredientList) {
@@ -63,20 +64,20 @@ readCSV(csvLink)
           }
         }
 
-        if(!repeat){
-        // Display selected ingredient in results section
-        $('#results').append(`<div class= 'd-flex bg-primary text-light p-1 m-1 ingredientHolder'><p class='mb-0 text-capitalize'>
+        if (!repeat) {
+          // Display selected ingredient in results section
+          $('#results').append(`<div class= 'd-flex bg-primary text-light p-1 m-1 ingredientHolder'><p class='mb-0 text-capitalize'>
         ${ingredientName}</p><p class = 'removeIngredient  px-1 mb-0 mx-1'>x</p></div>`);
 
-        // retrieve selected ingredients from localstorage, or if empty set empty array
-        var ingredientList = JSON.parse(localStorage.getItem("selectedIngredients")) || [];
+          // retrieve selected ingredients from localstorage, or if empty set empty array
+          var ingredientList = JSON.parse(localStorage.getItem("selectedIngredients")) || [];
 
-        // add current selected ingredient to array and save to localstorage
-        ingredientList.push(ingredientName);
-        localStorage.setItem("selectedIngredients", JSON.stringify(ingredientList));
+          // add current selected ingredient to array and save to localstorage
+          ingredientList.push(ingredientName);
+          localStorage.setItem("selectedIngredients", JSON.stringify(ingredientList));
         }
         //clear the value from the textbox and stop the event
-        $(this).val(''); return false; 
+        $(this).val(''); return false;
       },
       // Change the value in the text area based on which item is being focused on by hovering or up/down arrow key
       focus: function (e, ui) {
@@ -105,7 +106,7 @@ $('#results').on('click', '.ingredientHolder', function (event) {
 });
 
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   var favoritesList = [];
   var data = [];
 
@@ -118,18 +119,18 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 
   function searchRecipesByFood(foodQuery) {
-    var apiKey = '576304abc2ed49cda203960e12375f12';
+    var apiKey = '4c29761579484c20945ffe5c44dcac25';
 
     var apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${foodQuery}`;
 
     fetch(apiUrl)
-        .then(response => response.json())
-        .then(responseData => {
-            displayFoodSearchResults(responseData.results);
-        })
-        .catch(error => {
-            console.error("Error:", error);
-        });
+      .then(response => response.json())
+      .then(responseData => {
+        displayFoodSearchResults(responseData.results);
+      })
+      .catch(error => {
+        console.error("Error:", error);
+      });
   }
 
   function displayFoodSearchResults(recipes) {
@@ -145,8 +146,8 @@ document.addEventListener("DOMContentLoaded", function() {
           <div class="card-body">
               <h5 class="card-title">${recipe.title}</h5>
               <p class="card-text">${recipe.summary}</p>
-              <a href="${recipe.sourceUrl}" class="btn btn-primary" target="_blank">View Recipe</a>
-              <button class="btn btn-success save-button" data-recipe-id="${recipe.id}">Save</button>
+              <a onclick="fetchRecipeInfoApi()" "displayRecipeInfo()" href="recipe-results.html" class="btn btn-primary" target="_blank">View Recipe</a>
+              <button class="btn btn-success save-button" data-recipe-id="${recipe.id}">Save</button><button class="btn btn-info shop-button mx-1 text-light" data-recipe-id="${recipe.id}">Add to shopping list</button>
           </div>
       `;
 
@@ -155,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Update the event listeners for save buttons
     document.querySelectorAll(".save-button").forEach(button => {
-      button.addEventListener("click", function() {
+      button.addEventListener("click", function () {
         var recipeId = button.getAttribute("data-recipe-id");
 
         // Find the selected recipe in the search results
@@ -176,21 +177,48 @@ document.addEventListener("DOMContentLoaded", function() {
         }
       });
     });
+
+    // add event listener to shop buttons and add ingredient id to shopping list array
+    document.querySelectorAll(".shop-button").forEach(button => {
+      button.addEventListener("click", function () {
+        var recipeId = button.getAttribute("data-recipe-id");
+        console.log(recipeId);
+        // Optionally, you can update the button text to indicate that it's saved.
+        button.textContent = "Added";
+        var shoppingList = JSON.parse(localStorage.getItem("shoppingList")) || [];
+        // check for repeated ingredient 
+        var repeat = false;
+        if (shoppingList.length > 0) {
+          for (var x in shoppingList) {
+            if (shoppingList[x] === recipeId) {
+              repeat = true;
+            }
+          }
+        }
+
+        if (!repeat) {
+          shoppingList.push(recipeId);
+          localStorage.setItem("shoppingList", JSON.stringify(shoppingList));
+        }
+      }
+      );
+    });
   }
+
   console.log("before calling displayFavorites");
   function displayFavorites() {
     console.log("inside calling displayFavorites")
     console.log("The favorites list is:", favoritesList);
     var favoritesContainer = document.getElementById("favorites");
     if (!favoritesContainer) {
-        return; // Favorites container not found
+      return; // Favorites container not found
     }
     favoritesContainer.innerHTML = ""; // Clear any previous favorites
 
     favoritesList.forEach(recipe => {
-        var favoriteCard = document.createElement("div");
-        favoriteCard.className = "card";
-        favoriteCard.innerHTML = `
+      var favoriteCard = document.createElement("div");
+      favoriteCard.className = "card";
+      favoriteCard.innerHTML = `
             <img src="${recipe.image}" class="card-img-top" alt="${recipe.title}">
             <div class="card-body">
                 <h5 class="card-title">${recipe.title}</h5>
@@ -199,9 +227,9 @@ document.addEventListener("DOMContentLoaded", function() {
             </div>
         `;
 
-        favoritesContainer.appendChild(favoriteCard);
+      favoritesContainer.appendChild(favoriteCard);
     });
-}
+  }
 
   // Save favorites to local storage
   function saveFavoritesToLocalStorage() {
@@ -213,8 +241,8 @@ document.addEventListener("DOMContentLoaded", function() {
   function loadFavoritesFromLocalStorage() {
     var savedFavorites = localStorage.getItem("favorites");
     if (savedFavorites) {
-        favoritesList = JSON.parse(savedFavorites);
-        displayFavorites(); // Update the displayed favorites
+      favoritesList = JSON.parse(savedFavorites);
+      displayFavorites(); // Update the displayed favorites
     }
   }
 
