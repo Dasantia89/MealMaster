@@ -17,14 +17,14 @@ function viewRecipeInfo() {
       })
   }
   
-  displayRecipeInfo(data) {
-  
-    var recipeInfoContainer = document.getElementById("info-container")
+  // Function that displays fetched recipe information in 
+  displayRecipeInfo(data => {
     
-    data(recipe => {
+    var recipeInfoContainer = document.getElementById("info-container")
     var recipeInfo = document.createElement("div")
       recipeInfo.className = "recipe-info"
       recipeInfo.innerHTML = 
+  // Created elements to display specific recipe information    
       `
         <img src="${recipe.image}" alt="${recipe.title}" class="recipe-img">
         <div class="recipe-body">
@@ -34,6 +34,7 @@ function viewRecipeInfo() {
           <p class="recipe-instructions">Instructions: ${recipe.instructions}</p>
         </div>
       `
-    recipeInfoContainer.appendChild(recipeInfo); 
-  })
-};
+  // Adds newly created elements to recipe info container     
+    recipeInfoContainer.appendChild(recipeInfo);
+
+  });
