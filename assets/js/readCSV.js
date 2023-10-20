@@ -121,33 +121,72 @@ function searchRecipesByFood(foodQuery) {
 
   // Make the API request
   fetch(apiUrl)
-    .then(response => response.json())
-    .then(data => {
-      // Handle the data and display it in the "results2" section
-      displayFoodSearchResults(data.results); // Spoonacular API typically has results under 'results' property
-    })
-    .catch(error => {
-      console.error("Error:", error);
-    });
+      .then(response => response.json())
+      .then(data => {
+          // Handle the data and display it in the "results2" section
+          displayFoodSearchResults(data.results); // Spoonacular API typically has results under 'results' property
+      })
+      .catch(error => {
+          console.error("Error:", error);
+      });
 }
 
 function displayFoodSearchResults(data) {
-  const resultsContainer = document.getElementById("results2");
+  var resultsContainer = document.getElementById("results2");
   resultsContainer.innerHTML = ""; // Clear any previous results
 
-  // Loop through the data and create HTML elements to display the results
   data.forEach(recipe => {
-    const recipeCard = document.createElement("div");
-    recipeCard.className = "card";
-    recipeCard.innerHTML = `
+      var recipeCard = document.createElement("div");
+      recipeCard.className = "card";
+      recipeCard.innerHTML = `
           <img src="${recipe.image}" class="card-img-top" alt="${recipe.title}">
           <div class="card-body">
               <h5 class="card-title">${recipe.title}</h5>
               <p class="card-text">${recipe.summary}</p>
               <a href="${recipe.sourceUrl}" class="btn btn-primary" target="_blank">View Recipe</a>
+              <button class="btn btn-success save-button" data-recipe-id="${recipe.id}">Save</button>
           </div>
       `;
 
-    resultsContainer.appendChild(recipeCard);
+      resultsContainer.appendChild(recipeCard);
   });
+}
+
+// Initialize the favorites list as an empty array
+var favoritesList = [];
+
+// Add event listener to save buttons
+document.querySelectorAll(".save-button").forEach(button => {
+  button.addEventListener("click", function() {
+      var recipeId = button.getAttribute("data-recipe-id");
+
+      // Check if the recipe is not already in the favorites list
+      if (!favoritesList.some(recipe => recipe.id === recipeId)) {
+          var selectedRecipe = data.find(recipe => recipe.id === recipeId);
+          favoritesList.push(selectedRecipe);
+
+          // Optionally, you can update the button text to indicate that it's saved.
+          button.textContent = "Saved";
+      }
+  });
+});
+
+function displayFavorites() {
+    var favoritesContainer = document.getElementById("favorites");
+    favoritesContainer.innerHTML = ""; // Clear any previous favorites
+
+    favoritesList.forEach(recipe => {
+        var favoriteCard = document.createElement("div");
+        favoriteCard.className = "card";
+        favoriteCard.innerHTML = `
+            <img src="${recipe.image}" class="card-img-top" alt="${recipe.title}">
+            <div class="card-body">
+                <h5 class="card-title">${recipe.title}</h5>
+                <p class="card-text">${recipe.summary}</p>
+                <a href="${recipe.sourceUrl}" class="btn btn-primary" target="_blank">View Recipe</a>
+            </div>
+        `;
+
+        favoritesContainer.appendChild(favoriteCard);
+    });
 }
