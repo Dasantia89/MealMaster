@@ -125,10 +125,13 @@ function searchRecipesByFood(foodQuery) {
       .then(data => {
           // Handle the data and display it in the "results2" section
           displayFoodSearchResults(data.results); // Spoonacular API typically has results under 'results' property
+          console.log(results)
       })
       .catch(error => {
           console.error("Error:", error);
       });
+
+      
 }
 
 function displayFoodSearchResults(data) {
@@ -154,10 +157,10 @@ function displayFoodSearchResults(data) {
 
 // API Request to fetch recipe information
 
-async function fetchRecipeApi() {
+async function fetchRecipeInfoApi() {
 
-  var baseURL = `https://api.spoonacular.com/recipes/716429/information?apiKey=ffc7d58a481e49908c44e23f3625bb4b`
-  var response = await fetch(baseURL)
+  var recipeInfoURL = 'https://api.spoonacular.com/recipes/{716429}/information?apiKey=3fe2e7a85cbe455abfcc13d03019145e'
+  var response = await fetch(recipeInfoURL)
 
   console.log(response);
 
@@ -169,10 +172,17 @@ async function fetchRecipeApi() {
 
 }
 
-fetchRecipeApi();
 
-getRecipeInfo();
-   
+
+var viewRecipeBtn = document.querySelector(".btn btn-primary")
+
+viewRecipeBtn.addEventListener("click", () => {
+  fetchRecipeInfoApi();
+  displayRecipeInfo();
+  console.log("button clicked!")
+})
+
+
 // Initialize the favorites list as an empty array
 var favoritesList = [];
 
