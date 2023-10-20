@@ -1,4 +1,5 @@
 
+/*
 // API to display recipe search results
 var searchBtn2El = document.querySelector("#searchButton2")
 var recipeContainerEl = document.querySelector(".recipe-container")
@@ -52,3 +53,5 @@ function displayRecipe(results) {
 }
 
 //displayRecipe();
+
+*/

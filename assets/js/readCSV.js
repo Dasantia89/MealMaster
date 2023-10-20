@@ -148,57 +148,31 @@ function displayFoodSearchResults(data) {
           </div>
       `;
 
-      window.search2Id = recipe.id
-
       resultsContainer.appendChild(recipeCard);
   });
 }
 
 // API Request to fetch recipe information
 
-function getRecipeInfo() {
-    //change recipeID
-  
-    var requestURL = `https://api.spoonacular.com/recipes/${search2Id}/information?apiKey=251762f82c2f4947978e9c9e7007612f`
+async function fetchRecipeApi() {
 
-  fetch(requestURL)
-    .then(function (response) {
-        response.json();
-    })   
-    .then(function (data) {
-        displayRecipeInfo(data.results)
+  var baseURL = `https://api.spoonacular.com/recipes/716429/information?apiKey=ffc7d58a481e49908c44e23f3625bb4b`
+  var response = await fetch(baseURL)
 
-        console.log(data)
-    })
-  }
-   
-  displayRecipeInfo(data) {
-    var infoContainerEl = document.querySelector("#info-container")
-    infoContainerEl.innerHTML = "";
+  console.log(response);
 
-    data.forEach(recipe => {
-      var recipeResults = document.createElement("div");
-      recipeResults.className = "card";
-      recipeResults.innerHTML = 
-      `
-          <img src="${recipe.image}" class="recipe-img-top" alt="${recipe.title}">
-          <div class="recipe-body">
-              <h5 class="recipe-title">${recipe.title}</h5>
-              <p class="recipe-text">${recipe.summary}</p>
-          </div>
-      `;
-      infoContainerEl.appendChild.apply(recipeResults)
+  var data = await response.json();
+  fetchRecipeApi(data.results)
 
-  })
+  console.log(data);
+  console.log(results);
 
-  }
-  
-displayRecipeInfo(data)
+}
+
+fetchRecipeApi();
 
 getRecipeInfo();
-
-
-
+   
 // Initialize the favorites list as an empty array
 var favoritesList = [];
 
