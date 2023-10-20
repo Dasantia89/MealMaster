@@ -146,10 +146,10 @@ function displayFoodSearchResults(data) {
           <div class="card-body">
               <h5 class="card-title">${recipe.title}</h5>
               <p class="card-text">${recipe.summary}</p>
-              <a href="./recipe-results.html" class="btn btn-primary" target="_blank">View Recipe</a>
+              <a onclick="fetchRecipeInfoApi()" "displayRecipeInfo()" href="./  recipe-results.html" class="btn btn-primary" target="_blank">View Recipe</a>
               <button class="btn btn-success save-button" data-recipe-id="${recipe.id}">Save</button>
           </div>
-      `;
+      `;    
 
       resultsContainer.appendChild(recipeCard);
   });
@@ -172,9 +172,12 @@ async function fetchRecipeInfoApi() {
 
 }
 
+function displayRecipeInfo() {
+
+}
 
 
-var viewRecipeBtn = document.querySelector(".btn btn-primary")
+var viewRecipeBtn = document.querySelector(".btn-primary")
 
 viewRecipeBtn.addEventListener("click", () => {
   fetchRecipeInfoApi();
