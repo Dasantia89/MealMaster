@@ -105,6 +105,39 @@ $('#results').on('click', '.ingredientHolder', function (event) {
   $('#errorModal').modal('show');
 });
 
+// Event listener to handle "Submit" for "Search for Recipes" functionality
+document.getElementById("searchButton").addEventListener("click", function () {
+     // retrieve selected ingredients from localstorage
+  var ingredientList = JSON.parse(localStorage.getItem("selectedIngredients"))
+  
+  // console.log(ingredientList)
+  // Call the function to search for recipes by food
+  getRecipesByIngredients(ingredientList)
+});
+
+function getRecipesByIngredients(ingredientList){
+  var API_key = ""
+  // recieve input from multientry control
+  // take array and convert to comma-delimited string  
+  console.log(ingredientList)
+  selectedIngredientsString = ingredientList.join(',+')
+  var recipesByIngredientsURL = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=" +API_key + "&ingredients=" +selectedIngredientsString + "&number=2"// ingredients array seperated by commas
+  console.log(API_key)
+  console.log(recipesByIngredientsURL)
+
+    fetch(recipesByIngredientsURL)
+    .then(response => response.json()) // Parse the response as JSON
+    .then(data => {
+      // Handle the JSON data
+      console.log(data);
+    })
+    .catch(error => {
+      // Handle any errors that occurred during the request
+      console.error(error);
+    });  
+  
+    displayFoodSearchResults(data)
+  }
 
 document.addEventListener("DOMContentLoaded", function () {
   var favoritesList = [];
