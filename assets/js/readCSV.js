@@ -76,7 +76,7 @@ readCSV(csvLink)
         localStorage.setItem("selectedIngredients", JSON.stringify(ingredientList));
         }
         //clear the value from the textbox and stop the event
-        $(this).val(''); return false;
+        $(this).val(''); return false; 
       },
       // Change the value in the text area based on which item is being focused on by hovering or up/down arrow key
       focus: function (e, ui) {
