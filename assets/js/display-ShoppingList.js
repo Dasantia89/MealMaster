@@ -43,7 +43,7 @@ function displayShoppingList(data) {
 
 $('footer').on('click', 'ingredientHolder', function (event) {
     var apiKey = '8092495607acc5a88b6a86c522447eed'
-    var url = 'https://dasantia89.github.io/project1/display-ShoppingList.html';
+    var url = 'https://dasantia89.github.io/project1/pdfConversion.html';
     var apiURL = `https://pdfcrowd.com/api/pdf/convert?url=${encodeURIComponent(url)}`;
     var download = $('a');
     download.href = `${apiURL}&apikey=${apiKey}`;
