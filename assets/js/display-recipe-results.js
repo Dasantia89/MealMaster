@@ -29,12 +29,12 @@ var displayRecipeInfo = (data) => {
       recipeInfo.innerHTML = 
   // Created elements to display specific recipe information    
       `
-        <img src="${recipe.image}" alt="${recipe.title}" class="recipe-img">
+        <img src="${data.image}" alt="${data.title}" class="recipe-img">
         <div class="recipe-body">
-          <h2 class="recipe-title">${recipe.title}<h2>
-          <p class="recipe-Summary">${recipe.summary}</p>
-          <p class="recipe-details>Preparation Time: ${preparationMinutes} minutes, Ready in: ${recipe.readyInMinutes} minutes, Servings: ${servings}</p>
-          <p class="recipe-instructions">Instructions: ${recipe.instructions}</p>
+          <h2 class="recipe-title">${data.title}<h2>
+          <p class="recipe-Summary">${data.summary}</p>
+          <p class="recipe-details>Preparation Time: ${data.preparationMinutes} minutes, Ready in: ${data.readyInMinutes} minutes, Servings: ${data.servings}</p>
+          <p class="recipe-instructions">Instructions: ${data.instructions}</p>
         </div>
       `
   // Adds newly created elements to recipe info container     
