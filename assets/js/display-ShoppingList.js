@@ -1,10 +1,11 @@
 // 1d730a9aef3546fcafa63496f2f8dd33 ea76c6ba131246a798c43a6d36117dca 35ed7a68b3de4009b425e9690978834b
-var apiKey = '1d730a9aef3546fcafa63496f2f8dd33';
+var apiKey = 'ea76c6ba131246a798c43a6d36117dca';
 var link = `https://api.spoonacular.com/recipes/informationBulk?includeNutrition=False&apiKey=${apiKey}&ids=`;
 var shoppingList = JSON.parse(localStorage.getItem("shoppingList")) || [];
 for (x = 0; x < shoppingList.length; x++) {
     link = link + shoppingList[x] + ','
 }
+var list;
 
 
 fetch(link)
@@ -35,5 +36,18 @@ function displayShoppingList(data) {
 
         $('#list').append(card);
     }
+    const mainEl = document.getElementById('list');
+    const outer = mainEl.outerHTML
+    localStorage.setItem('shoppingListCards', outer);
 }
 
+$('footer').on('click', 'ingredientHolder', function (event) {
+    var apiKey = '8092495607acc5a88b6a86c522447eed'
+    var url = 'https://dasantia89.github.io/project1/pdfConversion.html';
+    var apiURL = `https://pdfcrowd.com/api/pdf/convert?url=${encodeURIComponent(url)}`;
+    var download = $('a');
+    download.href = `${apiURL}&apikey=${apiKey}`;
+    download.target = '_blank';
+    download.target = 'list.pdf';
+    download.click();
+});
