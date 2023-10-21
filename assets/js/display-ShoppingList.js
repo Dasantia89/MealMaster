@@ -5,7 +5,7 @@ var shoppingList = JSON.parse(localStorage.getItem("shoppingList")) || [];
 console.log(localStorage.getItem("shoppingList"));
 if (shoppingList.length===0){
     var recipeIds = document.location.search;
-    shoppingList = string.split(recipeIds)
+    shoppingList = recipeIds.split(",")
     $('#head').hide();
     $('#convertToPdf').hide();
 }
