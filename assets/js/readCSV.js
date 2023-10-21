@@ -179,13 +179,24 @@ document.addEventListener("DOMContentLoaded", function () {
           <div class="card-body">
               <h5 class="card-title">${recipe.title}</h5>
               <p class="card-text">${recipe.summary}</p>
-              <a onclick="viewRecipeInfo()" "displayRecipeInfo()" href="recipe-results.html" class="btn btn-primary" target="_blank">View Recipe</a>
+              <button class="btn btn-primary viewRecipe" data-recipe-id="${recipe.id}">View Recipe</a>
               <button class="btn btn-success save-button" data-recipe-id="${recipe.id}">Save</button><button class="btn btn-info shop-button mx-1 text-light" data-recipe-id="${recipe.id}">Add to shopping list</button>
           </div>
       `;
 
       resultsContainer.appendChild(recipeCard);
     });
+
+    // Event listeners for view recipe buttons
+    document.querySelectorAll(".viewRecipe").forEach(button => {
+      button.addEventListener("click", function () {
+      console.log(button);  
+      var recipeId = button.getAttribute("data-recipe-id");
+        localStorage.setItem('recipe', recipeId);
+         window.location = "./recipe-results.html";
+        })
+      });
+    
 
     // Update the event listeners for save buttons
     document.querySelectorAll(".save-button").forEach(button => {
