@@ -49,7 +49,7 @@ function displayShoppingList(data) {
 $('footer').on('click', '#convertToPdf', function (event) {
     var apiKey = 'Lf6IUaA2UVRMPeNK1pzQTLuJvMMQulaDnuU40gGp3WiDTGsPHionIgRUvixVVZeo'
     var pdfLink = 'https://dasantia89.github.io/project1/display-ShoppingList.html?q='
-    var apiURL = `https://api.html2pdf.app/v1/generate?html=${shoppingList}&apiKey=${apiKey}`
+    var apiURL = `https://api.html2pdf.app/v1/generate?html=${pdfLink}${shoppingList}&apiKey=${apiKey}`
     console.log(apiURL)
     window.open(apiURL, '_blank');
 
