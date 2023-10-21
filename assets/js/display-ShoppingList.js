@@ -1,12 +1,17 @@
 // 1d730a9aef3546fcafa63496f2f8dd33 ea76c6ba131246a798c43a6d36117dca 35ed7a68b3de4009b425e9690978834b
-var apiKey = 'ea76c6ba131246a798c43a6d36117dca';
+var apiKey = '35ed7a68b3de4009b425e9690978834b';
 var link = `https://api.spoonacular.com/recipes/informationBulk?includeNutrition=False&apiKey=${apiKey}&ids=`;
 var shoppingList = JSON.parse(localStorage.getItem("shoppingList")) || [];
-for (x = 0; x < shoppingList.length; x++) {
+if (shoppingList.length===0){
+    var recipeIds = document.location.search;
+    shoppingList = JSON.parse(recipeIds);
+    $('#head').hide();
+    $('#convertToPdf').hide();
+}
+
+for (var x = 0; x < shoppingList.length; x++) {
     link = link + shoppingList[x] + ','
 }
-var list;
-
 
 fetch(link)
     .then(response => response.json())
@@ -41,13 +46,11 @@ function displayShoppingList(data) {
     localStorage.setItem('shoppingListCards', outer);
 }
 
-$('footer').on('click', 'ingredientHolder', function (event) {
-    var apiKey = '8092495607acc5a88b6a86c522447eed'
-    var url = 'https://dasantia89.github.io/project1/pdfConversion.html';
-    var apiURL = `https://pdfcrowd.com/api/pdf/convert?url=${encodeURIComponent(url)}`;
-    var download = $('a');
-    download.href = `${apiURL}&apikey=${apiKey}`;
-    download.target = '_blank';
-    download.target = 'list.pdf';
-    download.click();
+$('footer').on('click', '#convertToPdf', function (event) {
+    var apiKey = 'Lf6IUaA2UVRMPeNK1pzQTLuJvMMQulaDnuU40gGp3WiDTGsPHionIgRUvixVVZeo'
+    var pdfLink = 'https://dasantia89.github.io/project1/display-ShoppingList.html?q='
+    var apiURL = `https://api.html2pdf.app/v1/generate?html=${shoppingList}&apiKey=${apiKey}`
+    console.log(apiURL)
+    window.open(apiURL, '_blank');
+
 });
