@@ -20,3 +20,9 @@
 #ui-id-1 .ui-menu-item {
   text-transform: capitalize;
 }
+
+div .page {
+  page-break-after: always; 
+  page-break-inside: avoid;
+}
+
