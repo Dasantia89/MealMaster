@@ -105,6 +105,28 @@ $('#results').on('click', '.ingredientHolder', function (event) {
   $('#errorModal').modal('show');
 });
 
+function displayFoodSearchResults(recipes) {
+  console.log(recipes);
+  var resultsContainer = document.getElementById("results2");
+  resultsContainer.innerHTML = "";
+
+  recipes.forEach(recipe => {
+    var recipeCard = document.createElement("div");
+    recipeCard.className = "card";
+    recipeCard.innerHTML = `
+        <img src="${recipe.image}" class="card-img-top" alt="${recipe.title}">
+        <div class="card-body">
+            <h5 class="card-title">${recipe.title}</h5>
+            <p class="card-text">${recipe.summary}</p>
+            <button class="btn btn-primary viewRecipe" data-recipe-id="${recipe.id}">View Recipe</a>
+            <button class="btn btn-success save-button" data-recipe-id="${recipe.id}">Save</button><button class="btn btn-info shop-button mx-1 text-light" data-recipe-id="${recipe.id}">Add to shopping list</button>
+        </div>
+    `;
+
+    resultsContainer.appendChild(recipeCard);
+  });
+}
+
 // Event listener to handle "Submit" for "Search for Recipes" functionality
 document.getElementById("searchButton").addEventListener("click", function () {
      // retrieve selected ingredients from localstorage
@@ -116,7 +138,7 @@ document.getElementById("searchButton").addEventListener("click", function () {
 });
 
 function getRecipesByIngredients(ingredientList){
-  var API_key = ""
+  var API_key = "994d5186ebf845a4a4d8311b272c6d11"
   // recieve input from multientry control
   // take array and convert to comma-delimited string  
   console.log(ingredientList)
@@ -125,18 +147,17 @@ function getRecipesByIngredients(ingredientList){
   console.log(API_key)
   console.log(recipesByIngredientsURL)
 
-    fetch(recipesByIngredientsURL)
+  fetch(recipesByIngredientsURL)
     .then(response => response.json()) // Parse the response as JSON
     .then(data => {
-      // Handle the JSON data
-      console.log(data);
-    })
-    .catch(error => {
-      // Handle any errors that occurred during the request
-      console.error(error);
-    });  
-  
-    displayFoodSearchResults(data)
+    // Handle the JSON data
+    // console.log(data);
+    displayFoodSearchResults(data);
+  })
+  .catch(error => {
+    // Handle any errors that occurred during the request
+    console.error(error);
+  });
   }
 
 document.addEventListener("DOMContentLoaded", function () {
