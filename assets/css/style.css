@@ -21,7 +21,7 @@
   text-transform: capitalize;
 }
 
-div .page {
+.page {
   page-break-after: always; 
   page-break-inside: avoid;
 }
