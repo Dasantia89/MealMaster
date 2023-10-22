@@ -1,8 +1,7 @@
 // 1d730a9aef3546fcafa63496f2f8dd33 ea76c6ba131246a798c43a6d36117dca 35ed7a68b3de4009b425e9690978834b
-var apiKey = '3fe2e7a85cbe455abfcc13d03019145e';
+var apiKey = '4c29761579484c20945ffe5c44dcac25';
 var link = `https://api.spoonacular.com/recipes/informationBulk?includeNutrition=False&apiKey=${apiKey}&ids=`;
 var shoppingList = JSON.parse(localStorage.getItem("shoppingList")) || [];
-console.log(localStorage.getItem("shoppingList"));
 var fromApi = false;
 // site is being loaded from pdf conversion api, so accept query parameters, put them in array,
 // and hide the header and footer
@@ -80,7 +79,7 @@ function displayPdfFormat(data) {
 $('footer').on('click', '#convertToPdf', function (event) {
     var apiKey = 'Lf6IUaA2UVRMPeNK1pzQTLuJvMMQulaDnuU40gGp3WiDTGsPHionIgRUvixVVZeo'
     var pdfLink = 'https://dasantia89.github.io/project1/display-ShoppingList.html?q='
-    var apiURL = `https://api.html2pdf.app/v1/generate?html=${pdfLink}${shoppingList}&apiKey=${apiKey}&waitFor=10`
+    var apiURL = `https://api.html2pdf.app/v1/generate?html=${pdfLink}${shoppingList}&apiKey=${apiKey}&waitFor=5`
     console.log(apiURL)
     window.open(apiURL, '_blank');
 
