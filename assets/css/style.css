@@ -12,10 +12,9 @@
   width: 150px;
   margin: auto;
 }
-b
-.title {
-  height: 80px;
 
+.title {
+  height: 190px;
 }
 .getRecipe-button {
   text-align: center;
@@ -25,7 +24,7 @@ b
   text-transform: capitalize;
 }
 
-#list .page {
+body #list .page {
   page-break-after: always; 
   page-break-before: always;
   page-break-inside: avoid;
@@ -38,4 +37,8 @@ b
 .delBtn {
   position: absolute;
   
+}
+
+#list div .list-group {
+  border:none;
 }

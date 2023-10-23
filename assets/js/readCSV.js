@@ -105,27 +105,6 @@ $('#results').on('click', '.ingredientHolder', function (event) {
   $('#errorModal').modal('show');
 });
 
-function displayFoodSearchResults(recipes) {
-  console.log(recipes);
-  var resultsContainer = document.getElementById("results2");
-  resultsContainer.innerHTML = "";
-
-  recipes.forEach(recipe => {
-    var recipeCard = document.createElement("div");
-    recipeCard.className = "card";
-    recipeCard.innerHTML = `
-        <img src="${recipe.image}" class="card-img-top" alt="${recipe.title}">
-        <div class="card-body">
-            <h5 class="card-title">${recipe.title}</h5>
-            <p class="card-text">${recipe.summary}</p>
-            <button class="btn btn-primary viewRecipe" data-recipe-id="${recipe.id}">View Recipe</a>
-            <button class="btn btn-success save-button" data-recipe-id="${recipe.id}">Save</button><button class="btn btn-info shop-button mx-1 text-light" data-recipe-id="${recipe.id}">Add to shopping list</button>
-        </div>
-    `;
-
-    resultsContainer.appendChild(recipeCard);
-  });
-}
 
 // Event listener to handle "Submit" for "Search for Recipes" functionality
 document.getElementById("searchButton").addEventListener("click", function () {
@@ -160,7 +139,7 @@ function getRecipesByIngredients(ingredientList){
   });
   }
 
-document.addEventListener("DOMContentLoaded", function () {
+
   var favoritesList = [];
   var data = [];
 
@@ -173,7 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   function searchRecipesByFood(foodQuery) {
-    var apiKey = '1d730a9aef3546fcafa63496f2f8dd33';
+    var apiKey = '2a1cfdf0e8c34292975e2cdbbeb66ce0';
 
     var apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${foodQuery}`;
 
@@ -313,4 +292,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Call loadFavoritesFromLocalStorage when the page loads
   loadFavoritesFromLocalStorage();
-});
