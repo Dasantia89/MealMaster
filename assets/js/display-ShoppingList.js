@@ -69,6 +69,8 @@ function displayShoppingList(data) {
 function displayPdfFormat(data) {
     $('#list').removeClass('flex-wrap');
     $('#list').addClass('flex-column');
+    $('#list').addClass('justify-content-center');
+
     for (var y = 0; y < data.length; y++) {
         var card = $(`<div class="page card col-10 d-flex flex-column mt-4  h-auto" data-id="${data[y].id}">
     <img class="border-bottom border-3 border-dark card-img img-thumbnail h-50" src="${data[y].image}"></img>
