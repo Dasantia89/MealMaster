@@ -13,10 +13,12 @@ if (shoppingList.length === 0) {
     $('#convertToPdf').hide();
     fromApi = true;
 }
+// append ingredient id's of the recipe's in shoppinglist to the api link
 for (var x = 0; x < shoppingList.length; x++) {
     link = link + shoppingList[x] + ','
 }
 
+// reset the values for the shoppinglist and reconstruct the api link with the new values
 function init(){
     shoppingList = JSON.parse(localStorage.getItem("shoppingList")) || [];;
     link = `https://api.spoonacular.com/recipes/informationBulk?includeNutrition=False&apiKey=${apiKey}&ids=`;
@@ -24,7 +26,7 @@ function init(){
         link = link + shoppingList[x] + ','
     }
 }
-
+// clear out the main element and retrieve recipe's. then display the data 
 getData();
 function getData() {
     $('#list').html('');
@@ -42,6 +44,7 @@ function getData() {
         });
 }
 
+// pull out the relevent recipe information from the json data and display it
 function displayShoppingList(data) {
     for (var y = 0; y < data.length; y++) {
         var card = $(`<div class="card list col-sm-12 col-md-3 d-flex flex-column mt-4 mx-2 p-0 " data-id="${data[y].id}">
@@ -58,12 +61,14 @@ function displayShoppingList(data) {
             ingredients.append(ingredient);
         }
         card.append(ingredients);
+        // add a button to delete the recipe from the shopping list
         var delBtn = $('<button class="delBtn">Delete</button>')
         card.append(delBtn);
         $('#list').append(card);
     }
 }
 
+// this function runs when the api is called and displays a more printable format
 function displayPdfFormat(data) {
     $('#list').removeClass('flex-wrap');
     $('#list').addClass('flex-column');
@@ -88,6 +93,7 @@ function displayPdfFormat(data) {
     }
 }
 
+// evenr listener for the convert to pdf button. 
 $('footer').on('click', '#convertToPdf', function (event) {
     var apiKey = 'Lf6IUaA2UVRMPeNK1pzQTLuJvMMQulaDnuU40gGp3WiDTGsPHionIgRUvixVVZeo'
     var pdfLink = 'https://dasantia89.github.io/project1/display-ShoppingList.html?q='
@@ -96,6 +102,7 @@ $('footer').on('click', '#convertToPdf', function (event) {
 
 });
 
+// event listener for deleting a recipe from the shopping list
 $('main').on('click', '.delBtn', function (event) {
     var id = $(this).parent().attr('data-id');
     var ids = JSON.parse(localStorage.getItem('shoppingList'));
