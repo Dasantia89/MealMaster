@@ -152,7 +152,7 @@ function getRecipesByIngredients(ingredientList){
   });
 
   function searchRecipesByFood(foodQuery) {
-    var apiKey = '2a1cfdf0e8c34292975e2cdbbeb66ce0';
+    var apiKey = '78edd369fcca4142972acee0f4fa2117';
 
     var apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${foodQuery}`;
 
@@ -179,8 +179,8 @@ function getRecipesByIngredients(ingredientList){
           <div class="card-body">
               <h5 class="card-title">${recipe.title}</h5>
               <p class="card-text">${recipe.summary}</p>
-              <button class="btn btn-primary viewRecipe" data-recipe-id="${recipe.id}">View Recipe</a>
-              <button class="btn btn-success save-button" data-recipe-id="${recipe.id}">Save</button><button class="btn btn-info shop-button mx-1 text-light" data-recipe-id="${recipe.id}">Add to shopping list</button>
+              <button class="btn btn-primary viewRecipe" data-recipe-id="${recipe.id}">View Recipe</a> <br>
+              <button class="btn btn-success save-button" data-recipe-id="${recipe.id}">Save</button><button class="btn btn-info shop-button mx-1 text-light" data-recipe-id="${recipe.id}">Add to Shopping List</button>
           </div>
       `;
 

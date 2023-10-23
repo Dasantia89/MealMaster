@@ -121,14 +121,23 @@ input:focus {
   background-color: green;
 } 
 
-.remove-button {
+.remove-button, .save-button {
   background-color: var(--orange);
+  margin:10px !important;
 }
 
-.remove-button:hover {
+.remove-button:hover, .save-button:hover{
   background-color: brown;
 }
 
+.shop-button {
+  background-color: var(--blue);
+  margin:10px !important;
+}
+
+.shop-button:hover {
+  background-color: darkblue;
+}
 
 /*--Style for recipe-results html--*/
 #info-container {
