@@ -3,7 +3,7 @@ viewRecipeInfo();
 function viewRecipeInfo() {
   var recipeId = localStorage.getItem('recipe');
   // need to replace with variable that reflects the selected recipe id  
-    var apiKey = '3fe2e7a85cbe455abfcc13d03019145e'
+    var apiKey = '78edd369fcca4142972acee0f4fa2117'
     var apiURL = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${apiKey}`
     
     fetch(apiURL)
@@ -31,27 +31,23 @@ var displayRecipeInfo = (data) => {
       
   // Created elements to display specific recipe information 
   
-      ` 
-        <div class="recipe-content container">     
+    ` 
+      <div class="recipe-content container">     
           <h2 class="recipe-title text-center">${data.title}<h2>
           <p class="recipe-details">Ready in: ${data.readyInMinutes} minutes, Servings: ${data.servings}</p>
         <br>
-          <img src="${data.image}" alt="${data.title}" class="recipe-img row col-6">
-        <br>  
-          <div class="ingredient-container col-6"> 
-            <h4 class="recipe-ingredients">Ingredients:</h4>
-              <ul class="ingredient-list">
-                <li class="ingredient-item">${ingredient}</li>    
-              </ul>
-          </div> 
-        <br>
-          
-          <p class="recipe-summary">${data.summary}</p>
-            <br>
-           
-          <p class="recipe-instructions">Instructions:<br>${data.instructions}</p>
+          <div class="row w-100">
+            <img src="${data.image}" alt="${data.title}" class="recipe-img col-sm">   
+            <div class="ingredient-container col-sm">
+              <h4 class="recipe-ingredients">Ingredients:</h4>
+                <ul class="ingredient-list">
+                  <li class="ingredient-item">${ingredient}</li>    
+                </ul>
+            </div>
+            <p class="recipe-summary col-12">${data.summary}</p>
+            <p class="recipe-instructions col-12">Instructions:<br>${data.instructions}</p>
       </div>  
-      `
+    `
     for (var i = 0; i < data.extendedIngredients.length; i++) {
       console.log(data.extendedIngredients[i]);
       var ingredient = data.extendedIngredients[i].original;

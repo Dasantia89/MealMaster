@@ -8,16 +8,14 @@
 }
 
 /*--Style for header and navbar section--*/
+
 header {
   background-image:url("../images/MealMasterBanner.png");
   background-size: 100%;
   background-position: bottom;
   background-repeat: no-repeat;
+  border: 5px solid var(--green);
   
-}
-
-header h1 ::first-letter {
-
 }
 
 header h1 {
@@ -48,30 +46,52 @@ header h1 {
 }
 
 /*--Style for recipe-results html--*/
+.recipe-content {
+
+}
+
 #info-container {
   padding: 50px;
   border: 5px solid var(--green);
 }
 
-.recipe-img {
-  border-radius: 20px;
-  border: 5px solid var(--yellow);
-}
-
 .recipe-title {
-  font-size: 50px;
+  font-size: 40px;
+  font-family: Abys, Josefin Sans Bolder;
   border-bottom: 5px solid var(--orange);
 }
 
-.recipe-summary {
+.recipe-img {
+  display:flex;
+  border: 5px solid var(--yellow);
   border-radius: 20px;
+  margin: 5px;
+}
+
+.recipe-details {
+  font-size: 30px;
+  font-family: Abys, Josefin Sans Bolder;
+}
+
+.recipe-summary {
   font-size: 20px;
   border: 5px solid var(--yellow);
+  border-radius: 20px;
+  padding: 10px;
+  margin: 5px;
 }
 
 .ingredient-container {
   font-size: 30px;
   border: 5px solid var(--yellow);
+  border-radius: 20px;
+  padding: 10px;
+  margin: 5px;
+}
+
+.recipe-ingredients {
+  font-size: 30px;
+  font-style: bold;
 }
 
 .ingredient-item {
@@ -79,8 +99,11 @@ header h1 {
 }
 
 .recipe-instructions {
-  font-size: 20px;
+  font-size: 30px;
   border: 5px solid var(--yellow);
+  border-radius: 20px;
+  padding: 10px;
+  margin: 5px;
 }
 
 
