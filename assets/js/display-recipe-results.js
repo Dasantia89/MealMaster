@@ -32,21 +32,22 @@ var displayRecipeInfo = (data) => {
       
   // Created elements to display specific recipe information 
   
-      `
-       <h2 class="recipe-title">${data.title}<h2>
-        <img src="${data.image}" alt="${data.title}" class="recipe-img">
-        <div class="recipe-body">
-          <p class="recipe-Summary">${data.summary}</p>
-          <br>
+      ` 
+        <div class="recipe-content row align-items-start">     
+          <h2 class="recipe-title text-center">${data.title}<h2>
           <p class="recipe-details">Ready in: ${data.readyInMinutes} minutes, <br>Servings: ${data.servings}</p>
-          <br>
-          <h4 class="recipe-ingredients">Ingredients:</h4>
-            <ul class="ingredient-list">
-              <li class="ingredient-item">${ingredient}</li>
+          <img src="${data.image}" alt="${data.title}" class="recipe-img col-6">
+            <p class="recipe-Summary col-6">${data.summary}</p>
+            <br>
+            <div class="ingredient-container"> 
+            <h4 class="recipe-ingredients">Ingredients:</h4>
+            <ul class="ingredient-list column-6">
+              <li class="ingredient-item">${ingredient}</li>    
             </ul>
+           </div> 
           <br>
           <p class="recipe-instructions">Instructions:<br>${data.instructions}</p>
-        </div>
+      </div>  
       `
     for (var i = 0; i < data.extendedIngredients.length; i++) {
       console.log(data.extendedIngredients[i]);

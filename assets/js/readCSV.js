@@ -193,7 +193,7 @@ function getRecipesByIngredients(ingredientList){
       console.log(button);  
       var recipeId = button.getAttribute("data-recipe-id");
         localStorage.setItem('recipe', recipeId);
-         window.location = "./recipe-results.html";
+        window.location = "./recipe-results.html";
         })
       });
     
