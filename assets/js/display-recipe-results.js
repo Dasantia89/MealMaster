@@ -48,7 +48,7 @@ var displayRecipeInfo = (data) => {
           <p class="recipe-instructions">Instructions:<br>${data.instructions}</p>
         </div>
       `
-      
+    
     for (var i = 0; i < data.extendedIngredients.length; i++) {
       console.log(data.extendedIngredients[i]);
       var ingredient = data.extendedIngredients[i].original;
