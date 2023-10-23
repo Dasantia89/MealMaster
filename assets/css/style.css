@@ -46,11 +46,6 @@ header h1 {
 }
 
 /*--Style for index.html--*/
-#main-homepage {
-  padding: 50px;
-  border: 5px solid var(--green);
-}
-
 .container
 #search, #search2 {
   display: block;
@@ -73,7 +68,7 @@ input:focus {
   border: solid 2px var(--yellow) !important;
 }
 
-    /*--Buttons--*/
+    /*--Buttons on homepage--*/
 #searchButton, #searchButton2 {
   display: inline !important;
   height: 50px;
@@ -83,12 +78,59 @@ input:focus {
 
 }
 
-
-/*--Style for recipe-results html--*/
-.recipe-content {
-
+/*--Style for display-recipe-results()--*/
+#main-favoritesPage {
+  padding: 50px;
+  border: 5px solid var(--green);
 }
 
+.favorites-title {
+  background-color: var(--orange);
+  color: white;
+  font-family: Abys, Josefin Sans Bolder;
+  opacity:80%;
+  padding: 10px;
+}
+
+.card {
+  border: 5px solid var(--yellow);
+  border-radius: 20px;
+  outline: none;
+}
+.card-img-top {
+  border: 5px solid var(--yellow);
+  border-radius: 20px 20px 0px 0px;
+}
+
+.card-title {
+  font-size: 30px;
+  font-family: Abys, Josefin Sans Bolder;
+}
+
+.card-body {
+  border: 5px solid var(--yellow);
+  border-radius: 0px 0px 20px 20px;
+}
+
+  /*--Buttons on recipe cards--*/
+.btn-primary {
+  background-color: var(--green);
+} 
+
+.btn-primary:hover {
+  background-color: green;
+} 
+
+.remove-button {
+  background-color: var(--orange);
+}
+
+.remove-button:hover {
+  background-color: brown;
+}
+
+
+/*--Style for recipe-results html--*/
 #info-container {
   padding: 50px;
   border: 5px solid var(--green);
