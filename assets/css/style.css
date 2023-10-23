@@ -12,11 +12,30 @@
   width: 150px;
   margin: auto;
 }
+b
+.title {
+  height: 80px;
 
+}
 .getRecipe-button {
   text-align: center;
 }
 
 #ui-id-1 .ui-menu-item {
   text-transform: capitalize;
+}
+
+#list .page {
+  page-break-after: always; 
+  page-break-before: always;
+  page-break-inside: avoid;
+}
+
+.list {
+  position: relative;
+}
+
+.delBtn {
+  position: absolute;
+  
 }

@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   function searchRecipesByFood(foodQuery) {
-    var apiKey = '4c29761579484c20945ffe5c44dcac25';
+    var apiKey = '1d730a9aef3546fcafa63496f2f8dd33';
 
     var apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${foodQuery}`;
 
