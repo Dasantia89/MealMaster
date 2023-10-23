@@ -1,5 +1,5 @@
 // 1d730a9aef3546fcafa63496f2f8dd33 ea76c6ba131246a798c43a6d36117dca 35ed7a68b3de4009b425e9690978834b
-var apiKey = '2a1cfdf0e8c34292975e2cdbbeb66ce0';
+var apiKey = '7b666e2b305d473a9869ca8132c765e5';
 var link = `https://api.spoonacular.com/recipes/informationBulk?includeNutrition=False&apiKey=${apiKey}&ids=`;
 var shoppingList = JSON.parse(localStorage.getItem("shoppingList")) || [];
 var fromApi = false;

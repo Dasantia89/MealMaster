@@ -1,6 +1,9 @@
 .card {
   border: solid;
 }
+.cardPdf {
+  border-bottom: solid;
+}
 
 .card-title {
   text-align: center;

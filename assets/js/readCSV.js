@@ -152,7 +152,7 @@ function getRecipesByIngredients(ingredientList){
   });
 
   function searchRecipesByFood(foodQuery) {
-    var apiKey = '2a1cfdf0e8c34292975e2cdbbeb66ce0';
+    var apiKey = '7b666e2b305d473a9869ca8132c765e5';
 
     var apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${foodQuery}`;
 
