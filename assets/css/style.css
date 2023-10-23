@@ -45,6 +45,45 @@ header h1 {
   background-color: var(--blue);
 }
 
+/*--Style for index.html--*/
+#main-homepage {
+  padding: 50px;
+  border: 5px solid var(--green);
+}
+
+.container
+#search, #search2 {
+  display: block;
+  border: solid 5px var(--orange);
+  font-family: Abys, Josefin Sans Bolder;
+  font-size: 50px;
+  border-radius: 20px;
+  padding: 10px;
+  justify-self: left;
+}
+
+.form-control {
+  display: inline !important;
+  height: 50px;
+  justify-content: center;
+}
+
+input:focus {
+  outline: none !important;
+  border: solid 2px var(--yellow) !important;
+}
+
+    /*--Buttons--*/
+#searchButton, #searchButton2 {
+  display: inline !important;
+  height: 50px;
+  width: 50%;
+  background-color: var(--green);
+  border: none;
+
+}
+
+
 /*--Style for recipe-results html--*/
 .recipe-content {
 
