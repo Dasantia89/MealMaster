@@ -248,5 +248,21 @@ input:focus {
 
 .delBtn {
   position: absolute;
-  
+  top: 7px;
+  left: 7px;
 }
+
+#list div .list-group {
+  border: none;
+}
+
+#list div h3 {
+  background-color: var(--green);
+  height: 150px;
+}
+
+main #results .ingredientHolder {
+  background-color: var(--green);
+  color: white;
+}
+

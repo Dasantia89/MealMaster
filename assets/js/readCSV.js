@@ -66,7 +66,7 @@ readCSV(csvLink)
 
         if (!repeat) {
           // Display selected ingredient in results section
-          $('#results').append(`<div class= 'd-flex bg-primary text-light p-1 m-1 ingredientHolder'><p class='mb-0 text-capitalize'>
+          $('#results').append(`<div class= 'd-flex p-1 m-1 ingredientHolder'><p class='mb-0 text-capitalize'>
         ${ingredientName}</p><p class = 'removeIngredient  px-1 mb-0 mx-1'>x</p></div>`);
 
           // retrieve selected ingredients from localstorage, or if empty set empty array
@@ -164,7 +164,7 @@ function getRecipesByIngredients(ingredientList){
               <h5 class="card-title">${recipe.title}</h5>
               <p class="card-text">${recipe.summary}</p>
               <button class="btn btn-primary viewRecipe" data-recipe-id="${recipe.id}">View Recipe</a> <br>
-              <button class="btn btn-success save-button" data-recipe-id="${recipe.id}">Save</button><button class="btn btn-info shop-button mx-1 text-light" data-recipe-id="${recipe.id}">Add to Shopping List</button>
+              <button class="btn btn-success save-button" data-recipe-id="${recipe.id}">Save</button><button class="btn btn-info shop-button text-light" data-recipe-id="${recipe.id}">Add to Shopping List</button>
           </div>
       `;
 
