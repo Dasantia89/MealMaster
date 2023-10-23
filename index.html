@@ -5,6 +5,7 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/c5ba532b80.js" crossorigin="anonymous"></script> 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="./assets/css/style.css">
@@ -14,25 +15,25 @@
 
 <body>
 
-    <header class="bg-primary text-white text-center p-4">
-        <h1>MealMaster</h1>
-        <nav class="navbar navbar-expand navbar-dark bg-primary">
-
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div class="navbar-nav">
-                <a class="nav-item nav-link active fs-2" href="#">Home</a>
-                <a class="nav-item nav-link fs-2" href="./favorites.html">Favorites</a>
-                <a class="nav-item nav-link fs-2" href="./display-ShoppingList.html">Shopping List</a>
+    <header class="text-white text-center p-4">
+        <h1><i class="fa-solid fa-utensils"></i> MealMaster</h1>
+          <nav class="navbar navbar-expand navbar-dark">
+        
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                  <a class="nav-item nav-link active fs-2" href="#">Home</a>
+                  <a class="nav-item nav-link fs-2" href="./favorites.html">Favorites</a>
+                  <a class="nav-item nav-link fs-2" href="./display-ShoppingList.html">Shopping List</a>
+                </div>
               </div>
-            </div>
-          </nav>
-    </header>
+            </nav>
+      </header>
 
     <main class="container mt-4">
         <section id="search" class="mb-4">
             <h2>Search for Recipes</h2>
-            <div class="input-group">
-                <input type="text" id="ingredients" class="form-control text-capitalize" placeholder="Enter ingredients (e.g., chicken, broccoli)">
+            <div class="input-group-prepend text-center">
+                <input type="text" id="ingredients" class="form-control shadow-none text-capitalize" placeholder="Enter ingredients (e.g., chicken, broccoli)">
                 <div class="input-group-append">
                     <button id="searchButton" class="btn btn-primary">Search</button>
                 </div>
@@ -44,9 +45,9 @@
         </section>  
 
         <section id="search2" class="mb-4">
-            <h3>Search for Meal by Food</h3>
-            <div class="input-group">
-                <input type="text" id="query" class="form-control text-capitalize" placeholder="Enter Food Name (e.g., Pizza, Pasta, Burgers)">
+            <h2>Search for Meal by Food</h2>
+            <div class="input-group-prepend text-center">
+                <input type="text" id="query" class="form-control shadow-none text-capitalize" placeholder="Enter Food Name (e.g., Pizza, Pasta, Burgers)">
                 <div class="input-group-append">
                     <button id="searchButton2" class="btn btn-primary">Search</button>
                 </div>
