@@ -106,15 +106,6 @@ $('#results').on('click', '.ingredientHolder', function (event) {
 });
 
 
-// Event listener to handle "Submit" for "Search for Recipes" functionality
-document.getElementById("searchButton").addEventListener("click", function () {
-     // retrieve selected ingredients from localstorage
-  var ingredientList = JSON.parse(localStorage.getItem("selectedIngredients"))
-  
-  // console.log(ingredientList)
-  // Call the function to search for recipes by food
-  getRecipesByIngredients(ingredientList)
-});
 
 function getRecipesByIngredients(ingredientList){
   var API_key = "994d5186ebf845a4a4d8311b272c6d11"
@@ -139,20 +130,13 @@ function getRecipesByIngredients(ingredientList){
   });
   }
 
-
   var favoritesList = [];
   var data = [];
 
-  document.getElementById("searchButton2").addEventListener("click", function () {
-    // Get the food query from the input field
-    var foodQuery = document.getElementById("query").value;
-
-    // Call the function to search for recipes by food
-    searchRecipesByFood(foodQuery);
-  });
+  
 
   function searchRecipesByFood(foodQuery) {
-    var apiKey = '7b666e2b305d473a9869ca8132c765e5';
+    var apiKey = '374e96620480486bb8aa3e7cd6e9f5d0';
 
     var apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${foodQuery}`;
 
@@ -175,7 +159,7 @@ function getRecipesByIngredients(ingredientList){
       var recipeCard = document.createElement("div");
       recipeCard.className = "card";
       recipeCard.innerHTML = `
-          <img src="${recipe.image}" class="card-img-top" alt="${recipe.title}">
+          <img src="${recipe.image}" class="card-img-top img-thumbnail" alt="${recipe.title}">
           <div class="card-body">
               <h5 class="card-title">${recipe.title}</h5>
               <p class="card-text">${recipe.summary}</p>
@@ -263,7 +247,7 @@ function getRecipesByIngredients(ingredientList){
       var favoriteCard = document.createElement("div");
       favoriteCard.className = "card";
       favoriteCard.innerHTML = `
-            <img src="${recipe.image}" class="card-img-top" alt="${recipe.title}">
+            <img src="${recipe.image}" class="card-img-top img-thumbnail" alt="${recipe.title}">
             <div class="card-body">
                 <h5 class="card-title">${recipe.title}</h5>
                 <p class="card-text">${recipe.summary}</p>

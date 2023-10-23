@@ -3,7 +3,7 @@ viewRecipeInfo();
 function viewRecipeInfo() {
   var recipeId = localStorage.getItem('recipe');
   // need to replace with variable that reflects the selected recipe id  
-    var apiKey = '7b666e2b305d473a9869ca8132c765e5'
+    var apiKey = '374e96620480486bb8aa3e7cd6e9f5d0';
     var apiURL = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${apiKey}`
     
     fetch(apiURL)
