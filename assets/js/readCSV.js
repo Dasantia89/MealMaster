@@ -163,8 +163,8 @@ function getRecipesByIngredients(ingredientList){
           <div class="card-body">
               <h5 class="card-title">${recipe.title}</h5>
               <p class="card-text">${recipe.summary}</p>
-              <button class="btn btn-primary viewRecipe" data-recipe-id="${recipe.id}">View Recipe</a>
-              <button class="btn btn-success save-button" data-recipe-id="${recipe.id}">Save</button><button class="btn btn-info shop-button mx-1 text-light" data-recipe-id="${recipe.id}">Add to shopping list</button>
+              <button class="btn btn-primary viewRecipe" data-recipe-id="${recipe.id}">View Recipe</a> <br>
+              <button class="btn btn-success save-button" data-recipe-id="${recipe.id}">Save</button><button class="btn btn-info shop-button mx-1 text-light" data-recipe-id="${recipe.id}">Add to Shopping List</button>
           </div>
       `;
 
@@ -177,7 +177,7 @@ function getRecipesByIngredients(ingredientList){
       console.log(button);  
       var recipeId = button.getAttribute("data-recipe-id");
         localStorage.setItem('recipe', recipeId);
-         window.location = "./recipe-results.html";
+        window.location = "./recipe-results.html";
         })
       });
     

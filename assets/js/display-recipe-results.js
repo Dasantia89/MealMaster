@@ -23,7 +23,6 @@ function viewRecipeInfo() {
   // Function that displays fetched recipe information in 
 var displayRecipeInfo = (data) => {
 
-    
     console.log(data)
     var recipeInfoContainer = document.getElementById("info-container")
     var recipeInfo = document.createElement("div")
@@ -32,22 +31,23 @@ var displayRecipeInfo = (data) => {
       
   // Created elements to display specific recipe information 
   
-      `
-       <h2 class="recipe-title">${data.title}<h2>
-        <img src="${data.image}" alt="${data.title}" class="recipe-img">
-        <div class="recipe-body">
-          <p class="recipe-Summary">${data.summary}</p>
-          <br>
-          <p class="recipe-details">Ready in: ${data.readyInMinutes} minutes, <br>Servings: ${data.servings}</p>
-          <br>
-          <h4 class="recipe-ingredients">Ingredients:</h4>
-            <ul class="ingredient-list">
-              <li class="ingredient-item">${ingredient}</li>
-            </ul>
-          <br>
-          <p class="recipe-instructions">Instructions:<br>${data.instructions}</p>
-        </div>
-      `
+    ` 
+      <div class="recipe-content container">     
+          <h2 class="recipe-title text-center">${data.title}<h2>
+          <p class="recipe-details">Ready in: ${data.readyInMinutes} minutes, Servings: ${data.servings}</p>
+        <br>
+          <div class="row w-100">
+            <img src="${data.image}" alt="${data.title}" class="recipe-img col-sm">   
+            <div class="ingredient-container col-sm">
+              <h4 class="recipe-ingredients">Ingredients:</h4>
+                <ul class="ingredient-list">
+                  <li class="ingredient-item">${ingredient}</li>    
+                </ul>
+            </div>
+            <p class="recipe-summary col-12">${data.summary}</p>
+            <p class="recipe-instructions col-12">Instructions:<br>${data.instructions}</p>
+      </div>  
+    `
     for (var i = 0; i < data.extendedIngredients.length; i++) {
       console.log(data.extendedIngredients[i]);
       var ingredient = data.extendedIngredients[i].original;

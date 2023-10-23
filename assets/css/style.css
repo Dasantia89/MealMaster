@@ -1,3 +1,204 @@
+/*--Global variables for color scheme--*/
+:root {
+  --yellow: #fcbd49;
+  --orange: #da5c11;
+  --green : #79af3c;
+  --blue: #415060;
+  --gray: #babebe;
+}
+
+/*--Style for header and navbar section--*/
+
+header {
+  background-image:url("../images/MealMasterBanner.png");
+  background-size: 100%;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  border: 5px solid var(--green);
+  
+}
+
+header h1 {
+  font-size: 100px;
+  opacity: 80%;
+  color: white;
+  font-family: Abys, Josefin Sans Bold;
+  background-color: var(--blue);
+  font-weight: bolder;
+  border-radius: 20px; 
+}
+
+.recipe-details {
+  text-align: center;
+}
+
+.navbar-nav {
+  width: 100%;
+  justify-content: center;
+  border-radius: 20px;
+  background-color: var(--blue);
+  opacity: 80%;
+}
+
+.nav-item {
+  font-size: 20px !important;
+  background-color: var(--blue);
+}
+
+/*--Style for index.html--*/
+.container
+#search, #search2 {
+  display: block;
+  border: solid 5px var(--orange);
+  font-family: Abys, Josefin Sans Bolder;
+  font-size: 50px;
+  border-radius: 20px;
+  padding: 10px;
+  justify-self: left;
+}
+
+.form-control {
+  display: inline !important;
+  height: 50px;
+  justify-content: center;
+}
+
+input:focus {
+  outline: none !important;
+  border: solid 2px var(--yellow) !important;
+}
+
+    /*--Buttons on homepage--*/
+#searchButton, #searchButton2 {
+  display: inline !important;
+  height: 50px;
+  width: 50%;
+  background-color: var(--green);
+  border: none;
+
+}
+
+/*--Style for display-recipe-results()--*/
+#main-favoritesPage {
+  padding: 50px;
+  border: 5px solid var(--green);
+}
+
+.favorites-title {
+  background-color: var(--orange);
+  color: white;
+  font-family: Abys, Josefin Sans Bolder;
+  font-size: 50px;
+  opacity:80%;
+  padding: 10px;
+}
+
+.card {
+  border: 5px solid var(--yellow);
+  border-radius: 20px;
+  outline: none;
+}
+.card-img-top {
+  border: 5px solid var(--yellow);
+  border-radius: 20px 20px 0px 0px;
+}
+
+.card-title {
+  font-size: 30px;
+  font-family: Abys, Josefin Sans Bolder;
+}
+
+.card-body {
+  border: 5px solid var(--yellow);
+  border-radius: 0px 0px 20px 20px;
+}
+
+  /*--Buttons on recipe cards--*/
+.btn-primary {
+  background-color: var(--green);
+} 
+
+.btn-primary:hover {
+  background-color: green;
+} 
+
+.remove-button, .save-button {
+  background-color: var(--orange);
+  margin:10px !important;
+}
+
+.remove-button:hover, .save-button:hover{
+  background-color: brown;
+}
+
+.shop-button {
+  background-color: var(--blue);
+  margin:10px !important;
+}
+
+.shop-button:hover {
+  background-color: darkblue;
+}
+
+/*--Style for recipe-results html--*/
+#info-container {
+  padding: 50px;
+  border: 5px solid var(--green);
+}
+
+.recipe-title {
+  font-size: 40px;
+  font-family: Abys, Josefin Sans Bolder;
+  border-bottom: 5px solid var(--orange);
+}
+
+.recipe-img {
+  display:flex;
+  border: 5px solid var(--yellow);
+  border-radius: 20px;
+  margin: 5px;
+}
+
+.recipe-details {
+  font-size: 30px;
+  font-family: Abys, Josefin Sans Bolder;
+}
+
+.recipe-summary {
+  font-size: 20px;
+  border: 5px solid var(--yellow);
+  border-radius: 20px;
+  padding: 10px;
+  margin: 5px;
+}
+
+.ingredient-container {
+  font-size: 30px;
+  border: 5px solid var(--yellow);
+  border-radius: 20px;
+  padding: 10px;
+  margin: 5px;
+}
+
+.recipe-ingredients {
+  font-size: 30px;
+  font-style: bold;
+}
+
+.ingredient-item {
+  font-size: 20px;
+}
+
+.recipe-instructions {
+  font-size: 30px;
+  border: 5px solid var(--yellow);
+  border-radius: 20px;
+  padding: 10px;
+  margin: 5px;
+}
+
+
+/*--Style for recipe cards--*/
 .card {
   border: solid;
 }
@@ -16,18 +217,26 @@
   margin: auto;
 }
 
-.title {
-  height: 190px;
+/*--Style for display-ShoppingList.html--*/
+#shopping-title {
+  background-color: var(--orange) !important;
+  color: white !important;
+  font-family: Abys, Josefin Sans Bolder !important;
+  font-size: 50px !important;
+  opacity:80% !important;
+  padding: 10px !important;
+  margin-top: 50px !important;
 }
-.getRecipe-button {
-  text-align: center;
+
+.title {
+  height: 80px;
 }
 
 #ui-id-1 .ui-menu-item {
   text-transform: capitalize;
 }
 
-body #list .page {
+#list .page {
   page-break-after: always; 
   page-break-before: always;
   page-break-inside: avoid;
@@ -40,8 +249,4 @@ body #list .page {
 .delBtn {
   position: absolute;
   
-}
-
-#list div .list-group {
-  border:none;
 }
