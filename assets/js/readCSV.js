@@ -116,7 +116,7 @@ document.getElementById("searchButton").addEventListener("click", function () {
 });
 
 function getRecipesByIngredients(ingredientList){
-  var API_key = ""
+  var API_key = "ea76c6ba131246a798c43a6d36117dca"
   // recieve input from multientry control
   // take array and convert to comma-delimited string  
   console.log(ingredientList)
@@ -130,16 +130,17 @@ function getRecipesByIngredients(ingredientList){
     .then(data => {
       // Handle the JSON data
       console.log(data);
+      displayFoodSearchResults(data)
+
     })
     .catch(error => {
       // Handle any errors that occurred during the request
       console.error(error);
     });  
   
-    displayFoodSearchResults(data)
   }
 
-document.addEventListener("DOMContentLoaded", function () {
+
   var favoritesList = [];
   var data = [];
 
@@ -152,7 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   function searchRecipesByFood(foodQuery) {
-    var apiKey = '1d730a9aef3546fcafa63496f2f8dd33';
+    var apiKey = 'ea76c6ba131246a798c43a6d36117dca';
 
     var apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}&query=${foodQuery}`;
 
@@ -175,12 +176,12 @@ document.addEventListener("DOMContentLoaded", function () {
       var recipeCard = document.createElement("div");
       recipeCard.className = "card";
       recipeCard.innerHTML = `
-          <img src="${recipe.image}" class="card-img-top" alt="${recipe.title}">
+          <img src="${recipe.image}" class="card-img-top img-thumbnail" alt="${recipe.title}">
           <div class="card-body">
               <h5 class="card-title">${recipe.title}</h5>
               <p class="card-text">${recipe.summary}</p>
-              <button class="btn btn-primary viewRecipe" data-recipe-id="${recipe.id}">View Recipe</a>
-              <button class="btn btn-success save-button" data-recipe-id="${recipe.id}">Save</button><button class="btn btn-info shop-button mx-1 text-light" data-recipe-id="${recipe.id}">Add to shopping list</button>
+              <button class="btn btn-primary viewRecipe " data-recipe-id="${recipe.id}">View Recipe</a>
+              <button class="btn btn-success save-button mx-1" data-recipe-id="${recipe.id}">Save</button><button class="btn btn-info shop-button text-light" data-recipe-id="${recipe.id}">Add to shopping list</button>
           </div>
       `;
 
@@ -292,4 +293,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Call loadFavoritesFromLocalStorage when the page loads
   loadFavoritesFromLocalStorage();
-});

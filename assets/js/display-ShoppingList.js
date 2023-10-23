@@ -1,5 +1,5 @@
 // 1d730a9aef3546fcafa63496f2f8dd33 ea76c6ba131246a798c43a6d36117dca 35ed7a68b3de4009b425e9690978834b
-var apiKey = '1d730a9aef3546fcafa63496f2f8dd33';
+var apiKey = 'ea76c6ba131246a798c43a6d36117dca';
 var link = `https://api.spoonacular.com/recipes/informationBulk?includeNutrition=False&apiKey=${apiKey}&ids=`;
 var shoppingList = JSON.parse(localStorage.getItem("shoppingList")) || [];
 var fromApi = false;
@@ -44,7 +44,7 @@ function getData() {
 function displayShoppingList(data) {
     for (var y = 0; y < data.length; y++) {
         var card = $(`<div class="card list col-sm-12 col-md-3 d-flex flex-column mt-4 mx-2 p-0" data-id="${data[y].id}">
-    <img class="border-bottom border-3 border-dark" src="${data[y].image}"></img>
+    <img class="border-bottom border-3 border-dark img-thumbnail" src="${data[y].image}"></img>
     <h3 class="title p-1 bg-primary text-light card-title border-bottom border-3 border-dark">${data[y].title}</h3>
     <h4 class="p-1 card-title">Ingredients:</h4>
     </div>`);
@@ -74,7 +74,7 @@ function displayPdfFormat(data) {
     for (var y = 0; y < data.length; y++) {
         var card = $(`<div class="page card col-10 d-flex flex-column mt-4  h-auto" data-id="${data[y].id}">
     <img class="border-bottom border-3 border-dark card-img img-thumbnail h-50" src="${data[y].image}"></img>
-    <h3 class="p-1 bg-primary text-light card-title border-bottom border-3 border-dark">${data[y].title}</h3>
+    <h3 class="title p-1 bg-primary text-light card-title border-bottom border-3 border-dark">${data[y].title}</h3>
     <h4 class="p-1 card-title">Ingredients:</h4>
     </div>`);
         var ingredients = $('<ul class="list-group d-flex flex-wrap flex-row col-12 h-auto"></ul>')

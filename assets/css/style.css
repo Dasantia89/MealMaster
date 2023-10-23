@@ -12,8 +12,9 @@
   width: 150px;
   margin: auto;
 }
-b
-.title {
+
+#list div .title {
+  width: auto;
   height: 80px;
 
 }
@@ -25,7 +26,7 @@ b
   text-transform: capitalize;
 }
 
-#list .page {
+body #list .page {
   page-break-after: always; 
   page-break-before: always;
   page-break-inside: avoid;
@@ -38,4 +39,8 @@ b
 .delBtn {
   position: absolute;
   
+}
+
+#list div .list-group {
+  border:none;
 }
