@@ -41,6 +41,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 var recipeId = event.target.getAttribute("data-recipe-id");
                 console.log("Removing recipe with ID:", recipeId);
                 removeRecipeFromFavorites(recipeId);
+            } else if (event.target.classList.contains("btn-primary")) {
+                var recipeId = event.target.getAttribute("data-recipe-id");
+                console.log("Viewing recipe with ID:", recipeId);
+                navigateToRecipeResultsPage(recipeId);
             }
         });
     }
@@ -58,6 +62,12 @@ document.addEventListener("DOMContentLoaded", function () {
     function saveFavoritesToLocalStorage() {
         localStorage.setItem("favorites", JSON.stringify(favoritesList));
         console.log("Favorites saved to local storage");
+    }
+
+    function navigateToRecipeResultsPage(recipeId) {
+        console.log("Navigating to recipe-results.html for recipe with ID:", recipeId);
+        localStorage.setItem("recipeId", recipeId);
+        window.location.href = "./recipe-results.html";
     }
 
     console.log("favorites.js - Before calling loadFavoritesFromLocalStorage");
