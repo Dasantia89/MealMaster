@@ -194,7 +194,7 @@ function getRecipesByIngredients(ingredientList){
         if (!favoritesList.some(recipe => recipe.id === recipeId)) {
           favoritesList.push(selectedRecipe);
 
-          // Optionally, you can update the button text to indicate that it's saved.
+          // update the button text to indicate that it's saved.
           button.textContent = "Saved";
 
           // Save the updated favorites list to local storage
@@ -211,7 +211,7 @@ function getRecipesByIngredients(ingredientList){
       button.addEventListener("click", function () {
         var recipeId = button.getAttribute("data-recipe-id");
         console.log(recipeId);
-        // Optionally, you can update the button text to indicate that it's saved.
+        // update the button text to indicate that it's saved.
         button.textContent = "Added";
         var shoppingList = JSON.parse(localStorage.getItem("shoppingList")) || [];
         // check for repeated ingredient 
