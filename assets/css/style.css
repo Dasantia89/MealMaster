@@ -202,6 +202,9 @@ input:focus {
 .card {
   border: solid;
 }
+.cardPdf {
+  border-bottom: solid;
+}
 
 .card-title {
   text-align: center;
@@ -245,5 +248,21 @@ input:focus {
 
 .delBtn {
   position: absolute;
-  
+  top: 7px;
+  left: 7px;
 }
+
+#list div .list-group {
+  border: none;
+}
+
+#list div h3 {
+  background-color: var(--green);
+  height: 150px;
+}
+
+main #results .ingredientHolder {
+  background-color: var(--green);
+  color: white;
+}
+
