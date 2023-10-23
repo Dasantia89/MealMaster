@@ -1,3 +1,12 @@
+:root {
+  --yellow: #fcbd49;
+  --orange: #da5c11;
+  --green : #79af3c;
+  --blue: #415060;
+  --gray: #babebe;
+}
+
+
 .card {
   border: solid;
 }
@@ -12,9 +21,10 @@
   width: 150px;
   margin: auto;
 }
-
+b
 .title {
-  height: 190px;
+  height: 80px;
+
 }
 .getRecipe-button {
   text-align: center;
@@ -24,7 +34,7 @@
   text-transform: capitalize;
 }
 
-body #list .page {
+#list .page {
   page-break-after: always; 
   page-break-before: always;
   page-break-inside: avoid;
@@ -37,8 +47,4 @@ body #list .page {
 .delBtn {
   position: absolute;
   
-}
-
-#list div .list-group {
-  border:none;
 }
