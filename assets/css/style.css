@@ -88,6 +88,7 @@ input:focus {
   background-color: var(--orange);
   color: white;
   font-family: Abys, Josefin Sans Bolder;
+  font-size: 50px;
   opacity:80%;
   padding: 10px;
 }
@@ -211,6 +212,17 @@ input:focus {
   height: 150px;
   width: 150px;
   margin: auto;
+}
+
+/*--Style for display-ShoppingList.html--*/
+#shopping-title {
+  background-color: var(--orange) !important;
+  color: white !important;
+  font-family: Abys, Josefin Sans Bolder !important;
+  font-size: 50px !important;
+  opacity:80% !important;
+  padding: 10px !important;
+  margin-top: 50px !important;
 }
 
 .title {
