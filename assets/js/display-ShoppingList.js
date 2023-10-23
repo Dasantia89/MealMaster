@@ -66,10 +66,10 @@ function displayShoppingList(data) {
 function displayPdfFormat(data) {
     $('#list').removeClass('flex-wrap');
     $('#list').addClass('flex-column');
-    $('#list').addClass('justify-content-center');
+    $('#list').addClass('align-items-center');
 
     for (var y = 0; y < data.length; y++) {
-        var card = $(`<div class="page card col-10 d-flex flex-column mt-4  h-auto" data-id="${data[y].id}">
+        var card = $(`<div class="page card col-12 d-flex flex-column mt-4  h-auto" data-id="${data[y].id}">
     <img class="border-bottom border-3 border-dark card-img img-thumbnail h-50" src="${data[y].image}"></img>
     <h3 class="p-1 bg-primary text-light card-title border-bottom border-3 border-dark">${data[y].title}</h3>
     <h4 class="p-1 card-title">Ingredients:</h4>
