@@ -13,6 +13,9 @@
   margin: auto;
 }
 
+.title {
+  height: 80px;;
+}
 .getRecipe-button {
   text-align: center;
 }
@@ -21,8 +24,16 @@
   text-transform: capitalize;
 }
 
-.page {
+div.page {
   page-break-after: always; 
   page-break-inside: avoid;
 }
 
+.list {
+  position: relative;
+}
+
+.delBtn {
+  position: absolute;
+  
+}
