@@ -11,6 +11,7 @@ if (shoppingList.length === 0) {
     shoppingList = recipeIds.split(",")
     $('#head').remove();
     $('#convertToPdf').remove();
+    $('#shopping-title').addClass('mt-0');
     fromApi = true;
 }
 // append ingredient id's of the recipe's in shoppinglist to the api link
@@ -75,7 +76,7 @@ function displayPdfFormat(data) {
     $('#list').addClass('align-items-center');
 
     for (var y = 0; y < data.length; y++) {
-        var card = $(`<div class="page card col-12 d-flex flex-column mt-4  h-auto" data-id="${data[y].id}">
+        var card = $(`<div class="page card col-11 d-flex flex-column mt-4  h-auto" data-id="${data[y].id}">
     <img class="card-img img-thumbnail h-50" src="${data[y].image}"></img>
     <h3 class="p-1 text-light card-title border-bottom border-3 border-dark">${data[y].title}</h3>
     <h4 class="p-1 card-title">Ingredients:</h4>
