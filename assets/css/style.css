@@ -15,7 +15,6 @@ header {
   background-position: bottom;
   background-repeat: no-repeat;
   border: 5px solid var(--green);
-  
 }
 
 header h1 {
@@ -263,3 +262,9 @@ main #results .ingredientHolder {
   color: white;
 }
 
+@media screen and (max-width: 700px) {
+  header h1 {
+    font-size: 50px;
+    height: 75%;
+  }
+}
