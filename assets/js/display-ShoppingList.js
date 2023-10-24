@@ -76,7 +76,7 @@ function displayPdfFormat(data) {
 
     for (var y = 0; y < data.length; y++) {
         var card = $(`<div class="page card col-12 d-flex flex-column mt-4  h-auto" data-id="${data[y].id}">
-    <img class="border-bottom border-3 border-dark card-img img-thumbnail h-50" src="${data[y].image}"></img>
+    <img class="card-img img-thumbnail h-50" src="${data[y].image}"></img>
     <h3 class="p-1 text-light card-title border-bottom border-3 border-dark">${data[y].title}</h3>
     <h4 class="p-1 card-title">Ingredients:</h4>
     </div>`);
@@ -93,7 +93,7 @@ function displayPdfFormat(data) {
     }
 }
 
-// evenr listener for the convert to pdf button. 
+// event listener for the convert to pdf button. 
 $('footer').on('click', '#convertToPdf', function (event) {
     var apiKey = 'E8SkuGNz7VcfIv52jSvugdXO1sBVqOgSCRfK4Mjxez58ZXzKcrQcdJsSFJcbc9zP'
     var pdfLink = 'https://dasantia89.github.io/project1/display-ShoppingList.html?q='
