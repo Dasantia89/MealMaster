@@ -113,7 +113,7 @@ function getRecipesByIngredients(ingredientList){
   // take array and convert to comma-delimited string  
   console.log(ingredientList)
   selectedIngredientsString = ingredientList.join(',+')
-  var recipesByIngredientsURL = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=" +API_key + "&ingredients=" +selectedIngredientsString + "&number=2"// ingredients array seperated by commas
+  var recipesByIngredientsURL = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=" +API_key + "&ingredients=" +selectedIngredientsString + "&number=10"// ingredients array seperated by commas
   console.log(API_key)
   console.log(recipesByIngredientsURL)
 
