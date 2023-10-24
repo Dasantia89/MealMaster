@@ -194,7 +194,7 @@ input:focus {
   font-size: 30px;
   border: 5px solid var(--yellow);
   border-radius: 20px;
-  padding: 10px;
+  padding-left: 50px;
   margin: 5px;
 }
 
