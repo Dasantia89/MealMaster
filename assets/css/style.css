@@ -199,9 +199,6 @@ input:focus {
 
 
 /*--Style for recipe cards--*/
-.card {
-  border: solid;
-}
 .cardPdf {
   border-bottom: solid;
 }
