@@ -33,20 +33,20 @@ function viewRecipeInfo() {
     }
   
     recipeInfo.innerHTML = `
-      <div class="recipe-content container">
-        <h2 class="recipe-title text-center">${data.title}</h2>
-        <p class="recipe-details">Ready in: ${data.readyInMinutes} minutes, Servings: ${data.servings}</p>
+      <div class="recipe-content container row-100">
+        <h2 class="recipe-title row w-100">${data.title}</h2>
+        <p class="recipe-details row w-100">Ready in: ${data.readyInMinutes} minutes, Servings: ${data.servings}</p>
         <br>
         <div class="row w-100">
           <img src="${data.image}" alt="${data.title}" class="recipe-img col-sm">
-          <div class="ingredient-container col-sm">
+            <div class="ingredient-container col-sm">
             <h4 class="recipe-ingredients">Ingredients:</h4>
             <ul class="ingredient-list">
               ${ingredientsList} <!-- Insert the list of ingredients here -->
             </ul>
           </div>
-          <p class="recipe-summary col-12">${data.summary}</p>
-          <div class="recipe-instructions col-12">
+          <p class="recipe-summary w-100">${data.summary}</p>
+          <div class="recipe-instructions row w-100">
           <h3>Instructions:<br></h3>${data.instructions}
           </div>
         </div>

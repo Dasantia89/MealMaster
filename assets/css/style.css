@@ -141,7 +141,7 @@ input:focus {
 
 /*--Style for recipe-results html--*/
 #info-container {
-  padding: 50px;
+  padding: 50px 50px 50px 60px;
   border: 5px solid var(--green);
 }
 
@@ -155,6 +155,7 @@ input:focus {
   display:flex;
   border: 5px solid var(--yellow);
   border-radius: 20px;
+  padding: 10px;
   margin: 5px;
 }
 
@@ -177,6 +178,7 @@ input:focus {
   border-radius: 20px;
   padding: 10px;
   margin: 5px;
+  margin-right: -4px;
 }
 
 .recipe-ingredients {
