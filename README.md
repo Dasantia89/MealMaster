@@ -36,23 +36,23 @@ The HTML page can be found at: https://dasantia89.github.io/project1/
 Images of our application are as follows:
 
 An example of landing page and our application accepting user input:
-![Index.html](/assets/images/Screenshot_20231024_01)
+![Index.html](/assets/images/Screenshot_20231024_01.png)
 
 A list of recipes that meet the users criteria:
-![Recipe Results](/assets/images/Screenshot_20231024_02)
+![Recipe Results](/assets/images/Screenshot_20231024_02.png)
 
 A detailed view of a selected recipe:
-![View Recipe Detail](/assets/images/Screenshot_20231024_03)
+![View Recipe Detail](/assets/images/Screenshot_20231024_03.png)
 
 An example of the list of the users saved/favorited recipes:
-![Favorites](/assets/images/Screenshot_20231024_04)
+![Favorites](/assets/images/Screenshot_20231024_04.png)
 
 An example of the Shopping List displaying the list of required ingredients:
-![Shopping List](/assets/images/Screenshot_20231024_05)
+![Shopping List](/assets/images/Screenshot_20231024_05.png)
 
 The location of the respository is as follows: https://github.com/Dasantia89/project1
 
-![Repository Image](/assets/images/Screenshot_20231024_06)
+![Repository Image](/assets/images/Screenshot_20231024_06.png)
 
 ## Citations and Credits
 - Header Banner Image<br>
