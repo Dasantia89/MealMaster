@@ -50,7 +50,7 @@ function displayShoppingList(data) {
     for (var y = 0; y < data.length; y++) {
         var card = $(`<div class="card list col-sm-12 col-md-3 d-flex flex-column mt-4 mx-2 p-0 rounded" data-id="${data[y].id}">
     <img class="img-thumbnail rounded-top" src="${data[y].image}"></img>
-    <h3 class="title p-1 text-light card-title border-bottom border-top border-3 border-dark text-center">${data[y].title}</h3>
+    <h3 class="title p-1 text-light card-title border-bottom border-top border-3 border-warning text-center">${data[y].title}</h3>
     <h4 class="p-1 card-title">Ingredients:</h4>
     </div>`);
         var ingredients = $('<ul class="list-group"></ul>')
@@ -77,8 +77,8 @@ function displayPdfFormat(data) {
 
     for (var y = 0; y < data.length; y++) {
         var card = $(`<div class="page card col-11 d-flex flex-column mt-4  h-auto" data-id="${data[y].id}">
-    <img class="card-img img-thumbnail h-50" src="${data[y].image}"></img>
-    <h3 class="p-1 text-light card-title border-bottom border-3 border-dark">${data[y].title}</h3>
+    <img class="img-thumbnail h-50" src="${data[y].image}"></img>
+    <h3 class="p-1 text-light card-title border-bottom border-3 border-warning">${data[y].title}</h3>
     <h4 class="p-1 card-title">Ingredients:</h4>
     </div>`);
         var ingredients = $('<ul class="list-group d-flex flex-wrap flex-row col-12 h-auto"></ul>')
