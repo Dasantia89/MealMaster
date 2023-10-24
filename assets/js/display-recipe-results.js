@@ -47,7 +47,7 @@ function viewRecipeInfo() {
           </div>
           <p class="recipe-summary w-100">${data.summary}</p>
           <div class="recipe-instructions row w-100">
-          <h3>Instructions:<br></h3>${data.instructions}
+          <h2 class="bolder">Instructions:<br></h2>${data.instructions}
           </div>
         </div>
       </div>
