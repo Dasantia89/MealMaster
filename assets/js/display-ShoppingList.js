@@ -9,8 +9,8 @@ var fromApi = false;
 if (shoppingList.length === 0) {
     var recipeIds = document.location.search;
     shoppingList = recipeIds.split(",")
-    $('#head').hide();
-    $('#convertToPdf').hide();
+    $('#head').remove();
+    $('#convertToPdf').remove();
     fromApi = true;
 }
 // append ingredient id's of the recipe's in shoppinglist to the api link
@@ -95,7 +95,7 @@ function displayPdfFormat(data) {
 
 // evenr listener for the convert to pdf button. 
 $('footer').on('click', '#convertToPdf', function (event) {
-    var apiKey = 'Lf6IUaA2UVRMPeNK1pzQTLuJvMMQulaDnuU40gGp3WiDTGsPHionIgRUvixVVZeo'
+    var apiKey = 'E8SkuGNz7VcfIv52jSvugdXO1sBVqOgSCRfK4Mjxez58ZXzKcrQcdJsSFJcbc9zP'
     var pdfLink = 'https://dasantia89.github.io/project1/display-ShoppingList.html?q='
     var apiURL = `https://api.html2pdf.app/v1/generate?html=${pdfLink}${shoppingList}&apiKey=${apiKey}&waitFor=5`
     window.open(apiURL, '_blank');
