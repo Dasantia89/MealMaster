@@ -250,7 +250,6 @@ function getRecipesByIngredients(ingredientList){
             <img src="${recipe.image}" class="card-img-top img-thumbnail" alt="${recipe.title}">
             <div class="card-body">
                 <h5 class="card-title">${recipe.title}</h5>
-                <p class="card-text">${recipe.summary}</p>
                 <a href="${recipe.sourceUrl}" class="btn btn-primary" target="_blank">View Recipe</a>
             </div>
         `;
