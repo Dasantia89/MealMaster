@@ -33,22 +33,27 @@ The result of this submission is an application deployed via GitHub Pages, with 
 
 The HTML page can be found at: https://dasantia89.github.io/project1/
 
-Images of our application are as follows:
+  - Images of our application are as follows:
 
-An example of landing page and our application accepting user input:
+  -- An example of landing page and our application accepting user input:
+
 ![Index.html](/assets/images/Screenshot_20231024_01.png)
 
-A list of recipes that meet the users criteria:
+  -- A list of recipes that meet the users criteria:
+
 ![Recipe Results](/assets/images/Screenshot_20231024_02.png)
 
-A detailed view of a selected recipe:
+  -- A detailed view of a selected recipe:
+
 ![View Recipe Detail](/assets/images/Screenshot_20231024_03.png)
 
-An example of the list of the users saved/favorited recipes:
+  -- An example of the list of the users saved/favorited recipes:
+
 ![Favorites](/assets/images/Screenshot_20231024_04.png)
 
-An example of the Shopping List displaying the list of required ingredients:
-![Shopping List](/assets/images/Screenshot_20231024_05.png)
+  -- An example of the Shopping List displaying the list of required ingredients:
+
+- ![Shopping List](/assets/images/Screenshot_20231024_05.png)
 
 The location of the respository is as follows: https://github.com/Dasantia89/project1
 
@@ -57,6 +62,8 @@ The location of the respository is as follows: https://github.com/Dasantia89/pro
 ## Citations and Credits
 - Header Banner Image<br>
   > Canva@baseimage."Meal Prep Ingredients." Canva, Accessed 23 Oct. 2023, https://www.canva.com/photos/MAFXU0sDblk-meal-prep-ingredients/
+- Ingredient List<br>
+  >"List of Ingredients" Spoonacular, Accessed 24 Oct. 2023, https://spoonacular.com/application/frontend/downloads/top-1k-ingredients.csv
 
 ## License
 
