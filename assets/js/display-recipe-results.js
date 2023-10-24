@@ -3,7 +3,7 @@ viewRecipeInfo();
 function viewRecipeInfo() {
   var recipeId = localStorage.getItem('recipe');
   // need to replace with variable that reflects the selected recipe id  
-    var apiKey = '374e96620480486bb8aa3e7cd6e9f5d0';
+    var apiKey = '60cdb81ebc7448b1934e0610644d1b3a';
     var apiURL = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${apiKey}`
     
     fetch(apiURL)
@@ -21,40 +21,35 @@ function viewRecipeInfo() {
   }
   
   // Function that displays fetched recipe information in 
-var displayRecipeInfo = (data) => {
-
-    console.log(data)
-    var recipeInfoContainer = document.getElementById("info-container")
-    var recipeInfo = document.createElement("div")
-      recipeInfo.className = "recipe-info"
-      recipeInfo.innerHTML = 
-      
-  // Created elements to display specific recipe information 
+  var displayRecipeInfo = (data) => {
+    var recipeInfoContainer = document.getElementById("info-container");
+    var recipeInfo = document.createElement("div");
+    recipeInfo.className = "recipe-info";
+    var ingredientsList = ''; // Create an empty string to store ingredients
   
-    ` 
-      <div class="recipe-content container">     
-          <h2 class="recipe-title text-center">${data.title}<h2>
-          <p class="recipe-details">Ready in: ${data.readyInMinutes} minutes, Servings: ${data.servings}</p>
-        <br>
-          <div class="row w-100">
-            <img src="${data.image}" alt="${data.title}" class="recipe-img col-sm">   
-            <div class="ingredient-container col-sm">
-              <h4 class="recipe-ingredients">Ingredients:</h4>
-                <ul class="ingredient-list">
-                  <li class="ingredient-item">${ingredient}</li>    
-                </ul>
-            </div>
-            <p class="recipe-summary col-12">${data.summary}</p>
-            <p class="recipe-instructions col-12">Instructions:<br>${data.instructions}</p>
-      </div>  
-    `
     for (var i = 0; i < data.extendedIngredients.length; i++) {
-      console.log(data.extendedIngredients[i]);
       var ingredient = data.extendedIngredients[i].original;
-      console.log(data.extendedIngredients[i].original);
+      ingredientsList += `<li class="ingredient-item">${ingredient}</li>`; // Append each ingredient to the list
     }
-    
-  // Adds newly created elements to recipe info container     
-    recipeInfoContainer.appendChild(recipeInfo)
   
+    recipeInfo.innerHTML = `
+      <div class="recipe-content container">
+        <h2 class="recipe-title text-center">${data.title}</h2>
+        <p class="recipe-details">Ready in: ${data.readyInMinutes} minutes, Servings: ${data.servings}</p>
+        <br>
+        <div class="row w-100">
+          <img src="${data.image}" alt="${data.title}" class="recipe-img col-sm">
+          <div class="ingredient-container col-sm">
+            <h4 class="recipe-ingredients">Ingredients:</h4>
+            <ul class="ingredient-list">
+              ${ingredientsList} <!-- Insert the list of ingredients here -->
+            </ul>
+          </div>
+          <p class="recipe-summary col-12">${data.summary}</p>
+          <p class="recipe-instructions col-12">Instructions:<br>${data.instructions}</p>
+        </div>
+      </div>
+    `;
+  
+    recipeInfoContainer.appendChild(recipeInfo);
   };

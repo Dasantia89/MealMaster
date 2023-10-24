@@ -143,8 +143,7 @@ function getRecipesByIngredients(ingredientList){
     fetch(apiUrl)
       .then(response => response.json())
       .then(responseData => {
-        console.log(responseData)
-        // displayFoodSearchResults(responseData.results);
+        displayFoodSearchResults(responseData.results);
       })
       .catch(error => {
         console.error("Error:", error);
@@ -163,6 +162,7 @@ function getRecipesByIngredients(ingredientList){
           <img src="${recipe.image}" class="card-img-top img-thumbnail" alt="${recipe.title}">
           <div class="card-body">
               <h5 class="card-title">${recipe.title}</h5>
+
               <button class="btn btn-primary viewRecipe" data-recipe-id="${recipe.id}">View Recipe</a> <br>
               <button class="btn btn-success save-button" data-recipe-id="${recipe.id}">Save</button><button class="btn btn-info shop-button text-light" data-recipe-id="${recipe.id}">Add to Shopping List</button>
           </div>
