@@ -46,7 +46,9 @@ function viewRecipeInfo() {
             </ul>
           </div>
           <p class="recipe-summary col-12">${data.summary}</p>
-          <p class="recipe-instructions col-12">Instructions:<br>${data.instructions}</p>
+          <div class="recipe-instructions col-12">
+          <h3>Instructions:<br></h3>${data.instructions}
+          </div>
         </div>
       </div>
     `;
