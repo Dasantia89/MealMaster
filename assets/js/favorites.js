@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("favorites.js - loadFavoritesFromLocalStorage called");
     var favoritesList = [];
 
     function loadFavoritesFromLocalStorage() {
@@ -11,8 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function displayFavorites() {
-        console.log("inside calling displayFavorites");
-        console.log("The favorites list is:", favoritesList);
         var favoritesContainer = document.getElementById("favorites");
         if (!favoritesContainer) {
             return; // Favorites container not found
@@ -38,11 +35,9 @@ document.addEventListener("DOMContentLoaded", function () {
         favoritesContainer.addEventListener("click", function (event) {
             if (event.target.classList.contains("remove-button")) {
                 var recipeId = event.target.getAttribute("data-recipe-id");
-                console.log("Removing recipe with ID:", recipeId);
                 removeRecipeFromFavorites(recipeId);
             } else if (event.target.classList.contains("btn-primary")) {
                 var recipeId = event.target.getAttribute("data-recipe-id");
-                console.log("Viewing recipe with ID:", recipeId);
                 navigateToRecipeResultsPage(recipeId);
             }
         });
@@ -50,9 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Event listener to handle removing a recipe from favorites
     function removeRecipeFromFavorites(recipeId) {
-        console.log("Before removal - The favorites list is:", favoritesList);
         favoritesList = favoritesList.filter(recipe => recipe.id !== parseInt(recipeId));
-        console.log("After removal - The favorites list is:", favoritesList);
         saveFavoritesToLocalStorage();
         displayFavorites();
     }
@@ -60,15 +53,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to save the updated favorites list to local storage
     function saveFavoritesToLocalStorage() {
         localStorage.setItem("favorites", JSON.stringify(favoritesList));
-        console.log("Favorites saved to local storage");
     }
 
     function navigateToRecipeResultsPage(recipeId) {
-        console.log("Navigating to recipe-results.html for recipe with ID:", recipeId);
         localStorage.setItem("recipeId", recipeId);
         window.location.href = "./recipe-results.html";
     }
 
-    console.log("favorites.js - Before calling loadFavoritesFromLocalStorage");
     loadFavoritesFromLocalStorage();
 });

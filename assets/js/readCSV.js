@@ -45,11 +45,7 @@ readCSV(csvLink)
       // Function that is run when an item from the autocomplete list is selected
       // ui contains name and id for selected ingredient
       select: function (e, ui) {
-        // every suggested item based on what the user typed
-        console.log($(e.currentTarget).children())
-        // the item that the user selected 
-        console.log(ui)
-
+       
         var ingredientName = ui.item.label;
         var ingredientList = JSON.parse(localStorage.getItem("selectedIngredients"));
         // check for repeated ingredient 
@@ -87,8 +83,7 @@ readCSV(csvLink)
     });
   })
   .catch(error => {
-    console.error(error);
-  });
+    console.error("Error:", error);  });
 
 // Remove ingredient from the list of selected ingredients on user click
 $('#results').on('click', '.ingredientHolder', function (event) {
@@ -111,22 +106,18 @@ function getRecipesByIngredients(ingredientList){
   var API_key = "994d5186ebf845a4a4d8311b272c6d11"
   // recieve input from multientry control
   // take array and convert to comma-delimited string  
-  console.log(ingredientList)
   selectedIngredientsString = ingredientList.join(',+')
   var recipesByIngredientsURL = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=" +API_key + "&ingredients=" +selectedIngredientsString + "&number=10"// ingredients array seperated by commas
-  console.log(API_key)
-  console.log(recipesByIngredientsURL)
 
   fetch(recipesByIngredientsURL)
     .then(response => response.json()) // Parse the response as JSON
     .then(data => {
     // Handle the JSON data
-    // console.log(data);
     displayFoodSearchResults(data);
   })
   .catch(error => {
     // Handle any errors that occurred during the request
-    console.error(error);
+    console.error("Error:", error);
   });
   }
 
@@ -151,7 +142,6 @@ function getRecipesByIngredients(ingredientList){
   }
 
   function displayFoodSearchResults(recipes) {
-    console.log(recipes);
     var resultsContainer = document.getElementById("results2");
     resultsContainer.innerHTML = "";
 
@@ -174,7 +164,6 @@ function getRecipesByIngredients(ingredientList){
     // Event listeners for view recipe buttons
     document.querySelectorAll(".viewRecipe").forEach(button => {
       button.addEventListener("click", function () {
-      console.log(button);  
       var recipeId = button.getAttribute("data-recipe-id");
         localStorage.setItem('recipe', recipeId);
         window.location = "./recipe-results.html";
@@ -210,7 +199,6 @@ function getRecipesByIngredients(ingredientList){
     document.querySelectorAll(".shop-button").forEach(button => {
       button.addEventListener("click", function () {
         var recipeId = button.getAttribute("data-recipe-id");
-        console.log(recipeId);
         // update the button text to indicate that it's saved.
         button.textContent = "Added";
         var shoppingList = JSON.parse(localStorage.getItem("shoppingList")) || [];
@@ -233,10 +221,7 @@ function getRecipesByIngredients(ingredientList){
     });
   }
 
-  console.log("before calling displayFavorites");
   function displayFavorites() {
-    console.log("inside calling displayFavorites")
-    console.log("The favorites list is:", favoritesList);
     var favoritesContainer = document.getElementById("favorites");
     if (!favoritesContainer) {
       return; // Favorites container not found
@@ -261,7 +246,6 @@ function getRecipesByIngredients(ingredientList){
   // Save favorites to local storage
   function saveFavoritesToLocalStorage() {
     localStorage.setItem("favorites", JSON.stringify(favoritesList));
-    console.log("Favorites saved to local storage");
   }
 
   // Load favorites from local storage when the page loads
