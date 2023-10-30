@@ -11,12 +11,10 @@ function viewRecipeInfo() {
         return response.json();
       })
       .then(function (data) {
-        console.log(data)
         displayRecipeInfo(data);
-        console.log(data);
       })
       .catch(function (error){
-        console.log(error)
+        console.error("Error:", error);
       })
   }
   
